@@ -1,0 +1,257 @@
+#LAY_app, body, html {
+  height: 100%
+}
+
+.layui-layout-body {
+  overflow: auto
+}
+
+#LAY-user-login, .czm-user-display-show {
+  display: block !important
+}
+
+.czm-user-login {
+  position: relative;
+  left: 0;
+  top: 0;
+  padding: 10px 0;
+  min-height: 100%;
+  box-sizing: border-box
+}
+
+.czm-user-login-main {
+  width: 375px;
+  margin: 0 auto;
+  box-sizing: border-box
+}
+
+.czm-user-login-box {
+  padding: 20px
+}
+
+.czm-user-login-header {
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.czm-user-login-header h2 {
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-size: 30px;
+  color: #000
+}
+
+.czm-user-login-header p {
+  font-weight: 300;
+  color: #999
+}
+
+.czm-user-login-body .layui-form-item {
+  position: relative
+}
+
+.czm-user-login-icon {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 38px;
+  line-height: 36px;
+  text-align: center;
+  color: #d2d2d2
+}
+
+.czm-user-login-body .layui-form-item .layui-input {
+  padding-left: 38px
+}
+
+.czm-user-login-codeimg {
+  max-height: 38px;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: border-box
+}
+
+.czm-user-login-other {
+  position: relative;
+  font-size: 0;
+  line-height: 38px;
+  padding-top: 20px
+}
+
+.czm-user-login-other > * {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  font-size: 14px
+}
+
+.czm-user-login-other .layui-icon {
+  position: relative;
+  top: 2px;
+  font-size: 26px
+}
+
+.czm-user-login-other a:hover {
+  opacity: .8
+}
+
+.czm-user-login-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 30px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, .5)
+}
+
+.czm-user-login-footer span {
+  padding: 0 5px
+}
+
+.czm-user-login-footer a {
+  padding: 0 5px;
+  color: rgba(0, 0, 0, .5)
+}
+
+.czm-user-login-footer a:hover {
+  color: rgba(0, 0, 0, 1)
+}
+
+.czm-user-login-main[bgimg] {
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .05)
+}
+
+.ladmin-user-login-theme {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center
+}
+
+.ladmin-user-login-theme ul {
+  display: inline-block;
+  padding: 5px;
+  background-color: #fff
+}
+
+
+@media screen and (max-width: 768px) {
+  .czm-user-login {
+    padding-top: 60px
+  }
+
+  .czm-user-login-main {
+    width: 300px
+  }
+
+  .czm-user-login-box {
+    padding: 10px
+  }
+}
+
+.czm-user-login-main {
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: 10px;
+  width: 88%;
+  margin-top: 20px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*background: url(./res/back.png) center;*/
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.main {
+  min-height: 387px;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 400px;
+  padding: 20px 0;
+  display: table;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  border-radius: 7px;
+  /*box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);*/
+  background-color: rgba(255, 192, 203, .6);
+}
+
+.main-right {
+  float: right;
+  width: 50%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  height: 480px;
+}
+
+.text-center {
+  color: white;
+  text-align: center;
+}
+
+.text-center h3 {
+  font-size: 1.75rem;
+}
+
+.text-center p {
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 900px) {
+  .czm-user-login {
+    padding-top: 10px;
+  }
+
+  .main {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .czm-user-login-main {
+    margin: 0 auto;
+  }
+
+  .main-right, .czm-user-login-main {
+    float: none;
+    width: 70%;
+  }
+
+  .main-right {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .czm-user-login {
+    padding-top: 10px;
+  }
+
+  .main {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .czm-user-login-main {
+    margin: 0 auto;
+  }
+
+  .main-right, .czm-user-login-main {
+    float: none;
+    width: 80%;
+  }
+
+  .main-right {
+    height: 300px;
+  }
+}

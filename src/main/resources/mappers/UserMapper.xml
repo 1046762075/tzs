@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bz.dao.UserDao">
+
+    <resultMap type="com.bz.entity.MyUser" id="myUserMap">
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="nickName" column="dept_name"/>
+        <result property="phone" column="phone"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="lastLoginTime" column="last_login_time"/>
+        <result property="lastLoginIp" column="last_login_ip"/>
+        <result property="loginTimes" column="login_times"/>
+        <result property="address" column="address"/>
+        <result property="isDel" column="is_del"/>
+    </resultMap>
+
+    <select id="getFuzzyUserByPage" resultMap="myUserMap">
+        SELECT u.user_id,u.user_name,u.nick_name,u.phone,u.status,u.create_time,u.update_time,
+        u.last_login_time, u.last_login_ip, u.login_times ,u.address,u.is_del, r.role_id
+        FROM my_user u
+        left join my_role_user r on r.user_id = u.user_id
+        <where>
+            <if test="phone != null and phone != ''">
+                AND u.phone like CONCAT('%', #{phone}, '%')
+            </if>
+            <if test="userName != null and userName != ''">
+                AND u.user_name like CONCAT('%', #{userName}, '%')
+            </if>
+            and u.is_del = 0
+        </where>
+        ORDER BY u.status desc, r.role_id asc
+    </select>
+
+    <select id="checkPhoneUnique" parameterType="String" resultType="com.bz.entity.MyUser">
+		select u.user_id,u.phone from my_user u where u.phone = #{phone} limit 1
+	</select>
+
+    <select id="checkUsernameUnique" parameterType="String" resultType="com.bz.entity.MyUser">
+		select u.user_id,u.user_name from my_user u where u.user_name = #{userName} limit 1
+	</select>
+
+    <select id="getUserBystatus" resultType="com.bz.entity.MyUser">
+        SELECT user_id,user_name FROM my_user WHERE status = 1 and is_del = 0
+    </select>
+
+    <resultMap type="com.bz.entity.MyUser" id="groupMap">
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="gTitle"/>
+        <result property="phone" column="phone"/>
+        <result property="createTime" column="create_time"/>
+        <result property="address" column="address"/>
+        <result property="isDel" column="is_del"/>
+    </resultMap>
+    <!--  登录时用来判断用户是否呗锁定以及所在的部门被锁定  -->
+    <select id="getUserStatusByName" resultType="com.bz.entity.MyUser">
+        SELECT u.user_id,u.user_name,u.password,u.nick_name,u.phone,u.status,u.create_time,u.update_time,
+        u.last_login_time, u.login_times, u.is_del
+        FROM my_user u
+        WHERE u.user_name = #{userName}
+    </select>
+    <select id="getUserIdBystatus" resultType="java.lang.Integer">
+         SELECT user_id FROM my_user WHERE user_id > 1 AND status = 1
+    </select>
+    <select id="getUserByName" resultType="java.lang.Integer">
+        SELECT user_id from my_user where user_name = #{userName} and status = 1 and is_del = 0
+    </select>
+
+    <update id="updateUser">
+        update my_user u
+        <set>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="isDel != null">
+                is_del = #{isDel},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where u.user_id = #{userId}
+    </update>
+    <update id="updatePwd">
+        UPDATE my_user set password = #{password} where user_id = #{userId}
+    </update>
+</mapper>

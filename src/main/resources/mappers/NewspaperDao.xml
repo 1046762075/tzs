@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bz.dao.NewspaperDao">
+
+    <resultMap type="com.bz.entity.NewspaperEntity" id="newspaperMap">
+        <result property="id" column="id"/>
+        <result property="applicationTime" column="application_time"/>
+        <result property="projectName" column="project_name"/>
+        <result property="contactPerson" column="contact_person"/>
+        <result property="contactNumber" column="contact_number"/>
+        <result property="detailedAddress" column="detailed_address"/>
+        <result property="applicant" column="applicant"/>
+        <result property="newspaperType" column="newspaper_type"/>
+        <result property="typeOfWater" column="Type_of_water"/>
+        <result property="numberOfWaterUsers" column="number_of_water_users"/>
+        <result property="estimatedAmountOfWater" column="estimated_amount_of_water"/>
+        <result property="remark" column="remark"/>
+        <result property="material" column="material"/>
+        <result property="verification" column="verification"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <insert id="submit" parameterType="com.bz.entity.NewspaperEntity">
+        INSERT newspaper(application_time, project_name, contact_person,
+        contact_number, detailed_address, applicant,
+        newspaper_type, type_of_water, number_of_water_users,
+        estimated_amount_of_water, remark, material,verification, status)
+        values(#{applicationTime},#{projectName},#{contactPerson},
+        #{contactNumber},#{detailedAddress},#{applicant},
+        #{newspaperType},#{typeOfWater},#{numberOfWaterUsers},
+        #{estimatedAmountOfWater},#{remark},#{material},#{verification},#{status})
+    </insert>
+    <update id="updateStatus">
+        UPDATE newspaper set status = #{status} where id = #{id}
+    </update>
+    <select id="findInstallationRecord" resultType="com.bz.entity.NewspaperEntity">
+        SELECT id, application_time, project_name, contact_person,contact_number, detailed_address, applicant,newspaper_type, type_of_water, number_of_water_users,estimated_amount_of_water, remark, material, verification, case status when '0' then '已提交'  when '1'  then '受理中' when '2' then '已完结' else '未知' end as status
+        FROM newspaper
+        WHERE verification = #{verification}
+    </select>
+    <select id="getFuzzyNewspaperByPage" resultType="com.bz.entity.NewspaperEntity">
+        SELECT n.id, n.application_time, n.project_name, n.contact_person,n.contact_number, n.detailed_address, n.applicant,n.newspaper_type, n.type_of_water, n.number_of_water_users,n.estimated_amount_of_water, n.remark, n.material, n.verification, n.status
+        FROM newspaper n
+        <where>
+            <if test="status != null and status != ''">
+                AND n.status = #{status}
+            </if>
+            <if test="contactPerson != null and contactPerson != ''">
+                AND n.contact_person like CONCAT('%', #{contactPerson}, '%')
+            </if>
+            <if test="contactNumber != null and contactNumber != ''">
+                AND n.contact_number like CONCAT('%', #{contactNumber}, '%')
+            </if>
+            <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+                AND n.application_time between #{startTime} and #{endTime}
+            </if>
+        </where>
+        order by n.application_time desc
+    </select>
+</mapper>

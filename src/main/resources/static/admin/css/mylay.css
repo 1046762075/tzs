@@ -1,0 +1,303 @@
+.layui-form .layui-form-item {
+    border-bottom: 1px #f6f6f6 solid;
+    padding-bottom: 15px;
+}
+.layui-form-item .layui-form-label {
+    color: #333;
+}
+.layui-form-label span {
+    color: #f52;
+}
+/*列表搜索*/
+.search_ctr {
+    float: right;
+    display: none;
+}
+.search_ctr .layui-form-item {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+.search_ctr .layui-form-item .layui-inline {
+    margin: 0;
+}
+
+.layui-table .no_span {
+    color: #c2c2c2;
+}
+.layui-table .yes_span {
+    color: #009688;
+}
+.layui-table .red_span {
+    color: #ff0000;
+}
+/*table行高*/
+.layui-table tbody td {
+    height: 36px;
+    line-height: 46px;
+}
+#spec_ctr .layui-table tbody td {
+    height: 20px;
+    line-height: 20px;
+}
+#console .layui-table tbody td {
+    height: 35px;
+    line-height: 35px;
+}
+.layui-table th {
+    background: url('/admin/r_images/lm_bg.gif') repeat-x left bottom #fff;
+    font-weight: bold;
+    color: #333;
+}
+.layui-table td img {
+    height: 30px;
+    cursor: pointer;
+}
+/*商品规格*/
+#spec_input_tab input {
+    width: 96%;
+    line-height:26px;
+    border:1px #e6e6e6 solid;
+    border-radius: 2px;
+    padding:0 2%;
+}
+#spec_sm_tab input {
+    width: 60%;
+    line-height:26px;
+    border:1px #e6e6e6 solid;
+    border-radius: 2px;
+    padding:0 2%;
+}
+.s_gg {
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+/*预览图片*/
+.layui-table td span img {
+    height: auto;
+    max-height: 350px;
+}
+#pic img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+}
+/*商品相册*/
+.pic_btn {
+    margin:3px auto;
+    float: left;
+    width:100px;
+    height:100px;
+    background: url('/admin/r_images/more.jpg') center center #f4f4f4;
+    background-size: 100%;
+    cursor: pointer;
+}
+.slide_ctr {
+    margin:3px 6px 3px 0;
+    float: left;
+    width:auto;
+    height:100px;
+    position: relative;
+}
+.slide_ctr img {
+    width:auto;
+    height: 100%;
+}
+.pic_del {
+    position: absolute;
+    right:5px;
+    top: 0;
+    z-index:9;
+    cursor: pointer;
+}
+/*添加页面关闭按钮*/
+.close_btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background: #f8f8f8;
+    z-index: 99;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/*选择商品*/
+.select_goods_ctr {
+    margin:5px 10px 5px 0;
+    float: left;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border: 1px #ddd solid;
+}
+.select_goods_ctr img {
+    width: 100%;
+    height: 100%;
+}
+.select_goods_title {
+    position: absolute;
+    width: 100%;
+    height:40px;
+    line-height: 18px;
+    left: 0;
+    top: 80px;
+    z-index: 9;
+    color: #fff;
+    background-color:rgba(0,0,0,0.4);
+    overflow: hidden;
+    font-size: 12px;
+    padding: 2px 10px;
+    box-sizing: border-box;
+}
+.select_goods_close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+}
+
+@media screen and (min-width:960px){
+    .search_ctr {
+        display: block;
+    }
+    .layui-form-item .layui-input-inline {
+        width: 260px;
+    }
+    .layui-form-item .w50 {
+        width: 50px;
+    }
+    .layui-form-item .w80 {
+        width: 80px;
+    }
+    .layui-form-item .w120 {
+        width: 120px;
+    }
+    .layui-form-item .w150 {
+        width: 150px;
+    }
+    .layui-form-item .w200 {
+        width: 200px;
+    }
+    .layui-form-item .w300 {
+        width: 300px;
+    }
+    .layui-form-item .w400 {
+        width: 400px;
+    }
+    .layui-form-item .w500 {
+        width: 500px;
+    }
+    .layui-form-item .layui-form-label {
+        width: 110px;
+    }
+    .layui-form-item .layui-input-block {
+        margin-left: 140px;
+        margin-right: 10px;
+    }
+}
+
+/*购物车*/
+.cart_tctr,.cart_fctr {
+    float: left;
+    width: 1224px;
+    height:45px;
+    line-height: 45px;
+    border: 1px #f2f2f2 solid;
+    background: #fcfcfc;
+}
+.cart_tctr td {
+    padding: 0 1%;box-sizing:border-box;
+}
+.cart_ctr {
+    margin:10px 0;
+    float: left;
+    width: 1224px;
+    height:auto;
+    overflow:hidden;
+    border: 1px #f2f2f2 solid;
+    background: #fff;
+    display: inline;
+}
+.cart_ctr input[type=checkbox],.cart_fctr input[type=checkbox] {
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+}
+.cart_ctr td {
+    padding: 15px 1%;
+    box-sizing:border-box;
+    border-bottom: 1px #eee dashed;
+}
+.red {
+    color: #ee4848;
+}
+.cart_pic {
+    float:left;
+    width:98px;
+    height:98px;
+    border:1px #eee solid;
+    display:inline;
+}
+.cart_pic img {
+    width:98px;
+    height:98px;
+    display:block;
+}
+.cart_t1,.cart_t2 {
+    float: left;
+    width:100%;
+    line-height: 20px;
+}
+.cart_t2 {
+    color: #999;
+    padding-top: 5px;
+}
+.cart_numctr {
+    float: left;
+    width: 110px;
+    height:30px;
+    border: 1px #ddd solid;
+    line-height: 28px;
+}
+.cart_del,.cart_add {
+    float: left;
+    width: 30px;
+    text-align: center;
+    font-size: 26px;
+    cursor: pointer;
+}
+.cart_input {
+    float: left;
+    width: 48px;
+    height:30px;
+    border: 0;
+    border-left:1px #ddd solid;
+    border-right:1px #ddd solid;
+    text-align: center;
+    line-height: 30px;
+}
+.cart_btn {
+    margin-left:10px;
+    float: right;
+    width: 90px;
+    height:45px;
+    background: #ee4848;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    font-size: 16px;
+}
+.cart_total {
+    float: right;
+    text-align: right;
+    line-height: 45px;
+    font-size: 16px;
+}

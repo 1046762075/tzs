@@ -1,0 +1,113 @@
+body{  /*不用加宽和高*/
+  background-color: #efeff4;
+  padding-bottom: 1.16rem;   /*让最下面商品列表往上拉的时候，最底下与工具栏之间有一个间距，而不是黏在一起*/
+}
+/* 头部 开始 */
+header{
+  width: 100%;
+  height: 4.4rem;
+  background: url("../image/banner1.jpg") no-repeat center center;
+  background-size: cover;
+}
+header .search{  padding-top: 0.16rem;  }
+header .search i{
+  font-size: 0.34rem;
+  color: white;
+  padding: 0 0.3rem;
+}
+header .input{  position: relative;  }
+header input{
+  width: 100%;
+  height: 0.6rem;
+  border-radius: 0.3rem;
+  background-color: rgba(255,255,255,0.4);
+}
+header p{
+  color: white;
+  line-height: 0.6rem;  /*不设置行高，行高会根据系统默认的高度*/
+  font-size: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+header span{  font-size: 0.28rem;  }
+header p .icon-cearch{  font-size: 0.28rem;  padding-right: 6px;  }
+/*  头部 结束  */
+
+#notice{  margin: 0.16rem  0;  }
+#notice>div{
+  width: 100%;
+  height: 0.8rem;
+  background-color: white;
+}
+#notice .line{
+  width: 3px;
+  height: 16px;
+  border-radius: 3px;
+  background-color: #3285ff;
+  margin: 0 6px 0 18px;
+}
+#notice span{
+  font-size: 0.28rem;
+  color: #3f3f3f;
+}
+
+/*  导航栏 开始  */
+#lead-icon{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+#lead-icon nav{  padding: 0.25rem 0.3rem 0; }
+#lead-icon a{  height: 50%; text-align: center; }
+#lead-icon img{  width: 0.8rem; }
+#lead-icon span{
+  font-size: 0.24rem;
+  line-height: 0.5rem;
+  color: #3f3f3f;
+  display: block;
+  width: 1rem;  /*目的是让span和img垂直对其，从而让整体的每个a占的比例一样宽*/
+}
+/*  导航栏 结束  */
+
+#notice2{  margin: 0.16rem  0;  }
+#notice2>div{
+  width: 100%;
+  height: 0.8rem;
+  background-color: white;
+}
+#notice2 .line{
+  width: 3px;
+  height: 16px;
+  border-radius: 3px;
+  background-color: #3285ff;
+  margin: 0 6px 0 18px;
+}
+#notice2 span{
+  font-size: 0.28rem;
+  color: #3f3f3f;
+}
+
+
+/*  商品列表 开始  */
+/*因为下面有图片，所以高不做限制，让其自然撑开*/
+#list .part{
+  width: 100%;
+  background-color: white;
+  margin-left: 3px;
+  margin-left: 3px;
+}
+#list img{  width: 50%;  height: 55%;}    /* 图片高不做限制，让其自然撑开*/
+#list p{
+  font-size: 0.22rem;
+  color: #7f8699;
+  line-height: 1.5em;
+  padding: 0 0.13rem;
+}
+#list span{
+  font-size: 0.24rem;
+  color: #ff4c4c;
+  line-height: 2em;
+}
+/*  商品列表 结束  */

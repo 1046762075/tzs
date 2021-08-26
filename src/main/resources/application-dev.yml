@@ -1,0 +1,32 @@
+# 数据源配置
+spring:
+  datasource:
+    driver:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/data_tzs_bx?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: mq0000
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始化配置
+      initial-size: 3
+      # 最小连接数
+      min-idle: 3
+      # 最大连接数
+      max-active: 15
+      # 获取连接超时时间
+      max-wait: 5000
+      # 连接有效性检测时间
+      time-between-eviction-runs-millis: 90000
+      # 最大空闲时间
+      min-evictable-idle-time-millis: 1800000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+logging:
+  level:
+    com.tzs: debug
+    root: debug
+  file:
+    path: src\main\resources\logger\ # logger文件夹需要提前生成
