@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="yes" name=" apple-mobile-web-app-capable"/>
+    <meta content="no" name="apple-touch-fullscreen"/>
+    <meta content="black" name=" apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+
+    <title>快捷服务</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
+    <script th:src="@{/js/base.js}"></script>
+    <link rel="stylesheet" href="////at.alicdn.com/t/font_799009_3wbyz9blkgq.css"/>
+
+</head>
+<body>
+<!-- 头部 开始 -->
+<header>
+
+</header>
+<!-- 头部 结束 -->
+<section id="notice">
+    <div flex="main:left cross:center">
+        <div class="line"></div>
+        <span>快捷办理</span>
+    </div>
+</section>
+<!-- 导航栏 开始-->
+<section id="lead-icon">
+    <nav class="up" flex>
+        <a th:href="@{/bx/newspaper}" flex-box="1" flex="dir:top main:center cross:center">
+          <img th:src="@{/image/baozhuang.jpg}"/>
+            <span>报装</span>
+        </a>
+        <a th:href="@{/bx/openAnAccount}" flex-box="1" flex="dir:top main:center cross:center">
+          <img th:src="@{/image/kaihu.jpg}"/>
+            <span>开户</span>
+        </a>
+        <a th:href="@{/bx/transfer}" flex-box="1" flex="dir:top main:center cross:center">
+          <img th:src="@{/image/guohu.jpg}"/>
+            <span>过户</span>
+        </a>
+<!--        <a href="#" flex-box="1" flex="dir:top main:center cross:center">-->
+<!--          <img th:src="@{/image/jiaofei.jpg}"/>-->
+<!--            <span>网上缴费</span>-->
+<!--        </a>-->
+    </nav>
+
+</section>
+<!-- 导航栏 结束 -->
+<section id="notice2">
+    <div flex="main:left cross:center">
+        <div class="line"></div>
+        <span>业务指南</span>
+    </div>
+</section>
+
+<section id="list" flex>
+    <div class="part" flex-box="1" flex="dir:top main:center cross:center">
+      <img th:src="@{/image/sp-1.jpg}"/>
+        <span>报装流程</span>
+    </div>
+
+    <div class="part" flex-box="1" flex="dir:top main:center cross:center">
+      <img th:src="@{/image/sp-2.jpg}"/>
+        <span>开户流程</span>
+    </div>
+
+    <div class="part" flex-box="1" flex="dir:top main:center cross:center">
+      <img th:src="@{/image/sp-3.jpg}"/>
+        <span>过户流程</span>
+    </div>
+</section>
+
+</body>
+</html>

@@ -10,7 +10,9 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Random;
 
 /**
  * <p>Title: bxService</p>
@@ -25,11 +27,13 @@ public class BzService {
 
 	public int submit(NewspaperEntity newspaper) {
 		newspaper.setStatus("0");
+		Random random = new Random();
+		newspaper.setApplicationCoding(new SimpleDateFormat("yyyyMMdd").format(newspaper.getApplicationTime()) + random.nextInt(1000));
 		return newspaperDao.submit(newspaper);
 	}
 
-	public List<NewspaperEntity> findInstallationRecord(NewspaperEntity verification) {
-		return newspaperDao.findInstallationRecord(verification.getVerification());
+	public List<NewspaperEntity> findInstallationRecord(String verification) {
+		return newspaperDao.findInstallationRecord(verification);
 	}
 
 	/**

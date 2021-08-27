@@ -11,11 +11,39 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 26/08/2021 18:08:53
+ Date: 27/08/2021 20:16:06
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for customer
+-- ----------------------------
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '客户名称',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '地址',
+  `handler` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '办理人',
+  `mobile_telephone` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '移动电话',
+  `fixed_telephone` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '固定电话',
+  `id_card` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '身份证号',
+  `tax_number` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '税号',
+  `verification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `application_coding` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '申请编码',
+  `material_one` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料一',
+  `material_two` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料二',
+  `material_three` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料三',
+  `status` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '状态 0 已提交 1 审核中 2 已完成  3 已驳回',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '开户时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of customer
+-- ----------------------------
+INSERT INTO `customer` VALUES (1, '2', '2', '2', '2', '2', '2', '2', '18173516309', '2', '2', '2', '2', '2', '2021-08-27 19:50:14');
 
 -- ----------------------------
 -- Table structure for my_menu
@@ -149,15 +177,23 @@ CREATE TABLE `newspaper`  (
   `material` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '资料地址',
   `verification` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   `status` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '状态 0 已提交 1受理中 2已完结 3已退回',
+  `application_coding` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '申请编码',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of newspaper
 -- ----------------------------
-INSERT INTO `newspaper` VALUES (10, '2021-08-23 00:00:00', 'test', 'rr', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '1', '3');
-INSERT INTO `newspaper` VALUES (11, '2021-08-23 00:00:00', 'test', 'lsl', '123', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '2', '2');
-INSERT INTO `newspaper` VALUES (12, '2021-08-23 00:00:00', 'test', 'hh', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '3', '1');
-INSERT INTO `newspaper` VALUES (13, '2021-08-23 00:00:00', 'test', 'lsl', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '4', '2');
+INSERT INTO `newspaper` VALUES (10, '2021-08-23 00:00:00', 'test', 'rr', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '1', '3', '2222');
+INSERT INTO `newspaper` VALUES (11, '2021-08-23 00:00:00', 'test', 'lsl', '123', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '2', '2', '1');
+INSERT INTO `newspaper` VALUES (12, '2021-08-23 00:00:00', 'test', 'hh', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '18173516309', '1', '1');
+INSERT INTO `newspaper` VALUES (13, '2021-08-23 00:00:00', 'test', 'lsl', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '18173516309', '2', '1');
+INSERT INTO `newspaper` VALUES (41, '2021-08-27 09:05:07', '1', '1', '1', '1', '1', 0, 1, 1, 1, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154403.jpg', '18173516309', '0', '1');
+INSERT INTO `newspaper` VALUES (51, '2021-08-27 17:15:36', '阿瓦达123', '2 ', '3 ', '3 ', '我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '2021082717153584');
+INSERT INTO `newspaper` VALUES (52, '2021-08-27 17:16:09', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171608158');
+INSERT INTO `newspaper` VALUES (53, '2021-08-27 17:16:55', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171655469');
+INSERT INTO `newspaper` VALUES (54, '2021-08-27 17:17:30', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171729634');
+INSERT INTO `newspaper` VALUES (55, '2021-08-27 17:20:22', '阿瓦达', '123', '哎喂', '哇', '我', 0, 1, 11, 111, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '12', '0', '20210827172022911');
+INSERT INTO `newspaper` VALUES (56, '2021-08-27 17:22:56', '有意思', '晋级赛', '1557334612', 'URH很费劲的', '就放假大家', 0, 1, 11, 1212, '', 'C:\\Java\\Spring\\upload\\-1977af8857e7ef42.jpg', '18173516309', '0', '20210827172255233');
 
 SET FOREIGN_KEY_CHECKS = 1;

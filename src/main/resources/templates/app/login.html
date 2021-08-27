@@ -1,0 +1,72 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <title>登录</title>
+  <style>
+    body {
+      font-size:20px;
+      font-family:"微软雅黑",Arial;
+      max-width:640px;
+      margin:0 auto;
+      padding:0;
+      color:#333;
+      line-height:21px;
+    backgr	.id_card {
+      width:93%;
+      margin:0 auto;
+    }
+    ound:#FFF;}.sub_z {
+                 width:90%;
+                 margin:0 auto;
+                 border-radius:5px;
+                 box-shadow:0px 0px 10px #888888;
+                 padding:10px 0 20px 0;
+               }
+    .account  {
+      width:90%;
+      height:38px;
+      margin:15px auto;
+      display:block;
+      background:#f2f2f2;
+      border:0;
+      border-radius:5px;
+      padding:0 0 0 15px;
+    }
+    .submit {
+      width:90%;
+      height:38px;
+      margin:0 auto;
+      background:#4a90e2;
+      color:#fff;
+      text-align:center;
+      line-height:38px;
+      border-radius:5px;
+    }
+  </style>
+</head>
+<body>
+<form method="get" id="myForm">
+  <div class="sub_z">
+    <input type="text" placeholder="请输入账号" class="account" id="verification">
+<!--    <input type="text" placeholder="请输入密码" class="account">-->
+    <input type="submit" value="进入" class="submit account" id="loginId">
+  </div>
+</form>
+</body>
+<script type="text/javascript">
+    let url = '[[${projectName}]]';
+    $("#loginId").click(function () {
+        let flag = true;
+        document.forms.myForm.action = url + '/bx/index/' + $("#verification").val();
+        $("input[type='text']").each(function(i,item){
+            if(item.value == ""){
+                alert("请输入账号");
+                flag = false;
+            }
+        });
+        return flag;
+    })
+</script>
+</html>

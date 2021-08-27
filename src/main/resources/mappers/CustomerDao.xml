@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bz.dao.CustomerDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bz.entity.CustomerEntity" id="customerMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="handler" column="handler"/>
+        <result property="mobileTelephone" column="mobile_telephone"/>
+        <result property="fixedTelephone" column="fixed_telephone"/>
+        <result property="idCard" column="id_card"/>
+        <result property="taxNumber" column="tax_number"/>
+        <result property="verification" column="verification"/>
+        <result property="applicationCoding" column="application_coding"/>
+        <result property="materialOne" column="material_one"/>
+        <result property="materialTwo" column="material_two"/>
+        <result property="materialThree" column="material_three"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <select id="findOpenAnAccount" resultType="com.bz.entity.CustomerEntity">
+        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.status, c.create_time
+        FROM customer c
+        WHERE c.verification = #{verification} order by c.create_time desc
+    </select>
+</mapper>

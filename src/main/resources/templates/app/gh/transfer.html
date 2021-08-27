@@ -1,0 +1,445 @@
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
+<meta content="#000000" name="theme-color">
+<link th:href="@{/other/manifest.json}" rel="manifest">
+<link th:href="@{/favicon.ico}" rel="shortcut icon">
+<title>报装-网上过户管理系统</title>
+<link rel="stylesheet" th:href="@{/css/main.65d94d6b.css}"/>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/main.ff40bfc6.js}"></script>
+<style type="text/css">html, * {
+  -moz-user-select: text !important;
+}</style>
+</head>
+<body>
+<div id="root">
+  <div>
+    <div class="top-menu">
+      <li style="list-style: none;" class="application active">
+        <button class="ant-btn" type="button"><span>开户申请</span></button>
+      </li>
+      <li style="list-style: none;" class="xz">
+        <button class="ant-btn" type="button"><span>开户须知</span></button>
+      </li>
+      <li style="list-style: none;" class="bz">
+        <button class="ant-btn" type="button"><span>查询进度</span></button>
+      </li>
+    </div>
+    <nay style="display: block;">
+      <div class="wx-content">
+        <form id="newspaperId" class="ant-form ant-form-horizontal wx-applyform">
+          <div class="applyform-unit">
+            <div class="ant-row ant-form-item">
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="ProjectName" title="用户名称">用户名称</label>
+              </div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
+                                                                                               data-__field="[object Object]"
+                                                                                               data-__meta="[object Object]"
+                                                                                               id="projectName"
+                                                                                               placeholder="必须与身份证或营业执照一致"
+                                                                                               type="text"
+                                                                                               name="projectName"></span>
+                </div>
+              </div>
+            </div>
+            <div class="ant-row ant-form-item form-exception1">
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="contactPerson"
+                                                                title="用水地址">用水地址</label></div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
+                                                                                               data-__field="[object Object]"
+                                                                                               data-__meta="[object Object]"
+                                                                                               id="contactPerson"
+                                                                                               placeholder="如：xxx街xxx路xx号xx小区xx楼xx单元xxx"
+                                                                                               type="text"
+                                                                                               name="contactPerson"></span>
+                </div>
+              </div>
+            </div>
+            <div class="ant-row ant-form-item">
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="contactNumber"
+                                                                title="办理人">办理人</label></div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
+                                                                                               data-__field="[object Object]"
+                                                                                               data-__meta="[object Object]"
+                                                                                               id="contactNumber"
+                                                                                               placeholder="请输入办理人"
+                                                                                               type="text"
+                                                                                               name="contactNumber"></span>
+                </div>
+              </div>
+            </div>
+            <div class="ant-row ant-form-item">
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="detailedAddress"
+                                                                title="移动电话">移动电话</label>
+              </div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input
+                        class="ant-input" data-__field="[object Object]" data-__meta="[object Object]"
+                        id="detailedAddress"
+                        placeholder="请输入移动电话" type="text" name="detailedAddress"></span></div>
+              </div>
+            </div>
+            <div class="ant-row ant-form-item">
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="applicant" title="固定电话">固定电话</label>
+              </div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
+                                                                                               data-__field="[object Object]"
+                                                                                               data-__meta="[object Object]"
+                                                                                               id="applicant"
+                                                                                               placeholder="请输入固定电话"
+                                                                                               type="text"
+                                                                                               name="applicant"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ant-row ant-form-item">
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="applicant" title="身份证号">身份证号</label>
+              </div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
+                                                                                               data-__field="[object Object]"
+                                                                                               data-__meta="[object Object]"
+                                                                                               id="applicant"
+                                                                                               placeholder="请输入身份证号"
+                                                                                               type="text"
+                                                                                               name="applicant"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ant-row ant-form-item">
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="applicant" title="税号">税号</label>
+              </div>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
+                                                                                               data-__field="[object Object]"
+                                                                                               data-__meta="[object Object]"
+                                                                                               id="applicant"
+                                                                                               placeholder="请输入税号"
+                                                                                               type="text"
+                                                                                               name="applicant"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="wx-upload-title">上传资料</p>
+          <div class="applyform-unit">
+            <div class="ant-row ant-form-item">
+              <div class="ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><span class=""><div
+                        class="ant-upload ant-upload-select ant-upload-select-text"><span tabindex="0"
+                                                                                          class="ant-upload"
+                                                                                          role="button"><input
+                        type="file" accept="" style="display: none;"><button type="button" class="ant-btn"><i
+                        class="anticon anticon-upload" style="font-size: 16px;"><svg viewBox="64 64 896 896" class=""
+                                                                                     data-icon="upload" width="1em"
+                                                                                     height="1em" fill="currentColor"
+                                                                                     aria-hidden="true"><path
+                        d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path></svg></i><span>点击上传</span></button></span></div><div
+                        class="ant-upload-list ant-upload-list-text"></div></span><div
+                        style="color: blue; font-size: 10px; line-height: 20px;"><div
+                        style="margin-bottom: 8px; margin-top: 8px;">居民用户请上传：<br>1、户主身份证照片正反面 <br>2、物业证明 <br></div><div
+                        style="margin-bottom: 8px; margin-top: 8px;">单位用户请上传：<br>1、单位营业执照正（副）本、盖公章<br>2、办理人身份证<br>3、物业证明</div></div></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info">如有疑问请咨询18173516309</div>
+          <div class="wx-apply-footer">
+            <!--          <button class="ant-btn footer-btn" type="button"><span>保 存</span></button>-->
+            <button id="siteSubmit" class="ant-btn footer-btn ant-btn-primary"><span>提 交</span></button>
+          </div>
+        </form>
+      </div>
+    </nay>
+
+    <nay style="display: none;">
+      <div class="wx-content">
+        <div id="main">
+          <div id="flow"><h1>办理说明</h1>
+            <div id="text">
+              <div><h2 style="text-align:center;">开户申请告知书</h2>
+                <p style="text-indent:2em;">欢迎您到高密水业公司办理开户业务！我们将竭诚为您提供主动、高效、便捷的供水服务。为了使您在办理业务时更加快捷、明晰，请您仔细阅读以下内容：</p>
+                <h3>一、开户申请业务</h3>
+                <p style="text-indent:2em;">新用户须与高密水业公司建立新的供用水关系，签订供用水合同，办理开户业务。</p>
+                <h3>二、业务办理流程</h3>
+                <p style="text-indent:2em;">填写申请表并提交--审核材料--通水--用户确认信息—立户成功--结束。</p>
+                <p style="text-indent:6em;"></p>
+                <div class="media-wrap image-wrap align-center" style="text-align:center"><img
+                        class="media-wrap image-wrap align-center"
+                        src="http://pay.sdgmzls.cn/besapi/Information/img/kaihu.jpg" width="300px" height="512px"
+                        style="width:300px;height:512px"></div>
+                <p></p>
+                <p></p>
+                <h3>三、客户需提报的资料</h3>
+                <p style="text-indent:2em;">按照用户类别分为个人户与单位户，请跟据您所属类别提交对应材料：</p>
+                <p>个人户：户主身份证照片、物业证明（盖公章）<br>单位户：营业执照</p>
+                <p></p>
+                <p>四、用户须知</p>
+                <p></p>
+                <p><span style="color:#000000"><span style="font-size:16px"><span style="background-color:#ffffff">开户资料审核通过后供水员将在48小时内联系用户约定通水时间。</span></span></span>
+                </p>
+                <p><span style="color:#000000"><span style="font-size:16px"><span style="background-color:#ffffff">       到用户确认信息环节，请在72小时内进行确认，若没有在规定时间内进行确认系统默认同意，流程结束。</span></span></span>
+                </p>
+                <p> 如有疑问请咨询0536-2663456、2323145。 </p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nay>
+
+    <nay class="bz" style="display: none;">
+      <div class="wx-content">
+        <div class="top-tabs">
+          <div class="tab-item r1 bes-tab-item-selected">
+            <div onclick="updateBtnStatus(1)">进行中</div>
+          </div>
+          <div class="divider ant-divider ant-divider-vertical"></div>
+          <div class="tab-item r2" onclick="updateBtnStatus(2)">已完成</div>
+        </div>
+        <div class="my-swipeable-views-style" style="overflow-x: hidden;">
+          <div class="react-swipeable-view-container"
+               style="flex-direction: row; transition: all 0s ease 0s; direction: ltr; display: flex; will-change: transform; transform: translate(0%, 0px);">
+
+            <div aria-hidden="false" data-swipeable="true" style="width: 100%; flex-shrink: 0; overflow: auto;">
+              <div>
+                <!--                <div style="display: none;">-->
+                <div class="major">
+                  <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
+
+                  <div class="wai" th:if="${newspapers != null}" th:each="n,index:${newspapers}">
+                    <table>
+                      <tbody>
+                      <tr>
+                        <td class="project-name"><i class="anticon anticon-appstore" style="color: rgb(0, 116, 217);">
+                          <svg viewBox="64 64 896 896" class="" data-icon="appstore" width="1em" height="1em"
+                               fill="currentColor" aria-hidden="true">
+                            <path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path>
+                          </svg>
+                        </i> [[${n.projectName}]]
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="applyTime">申请时间</td>
+                        <td class="value applyTime">[[${#dates.format(n.applicationTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
+                      </tr>
+                      <tr>
+                        <td class="exception1">联系人</td>
+                        <td class="value">[[${n.contactPerson}]]</td>
+                      </tr>
+                      <tr>
+                        <td class="aa">申请编码</td>
+                        <td> [[${n.applicationCoding}]]</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <div class="custom-divider"></div>
+                    <div class="card-control">
+                      <div class="progress">当前进度:
+                        <span th:if="${n.status == '0'}">提交申请</span>
+                        <span th:if="${n.status == '1'}">受理中</span>
+                        <span th:if="${n.status == '3'}">已退回</span>
+                      </div>
+                      <!--                      <div class="control-link"><i class="anticon anticon-clock-circle">-->
+                      <!--                        <svg viewBox="64 64 896 896" class="" data-icon="clock-circle" width="1em" height="1em"-->
+                      <!--                             fill="currentColor" aria-hidden="true">-->
+                      <!--                          <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>-->
+                      <!--                          <path d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"></path>-->
+                      <!--                        </svg>-->
+                      <!--                      </i> 流程进度-->
+                      <!--                      </div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-footer">
+                <div class="ant-divider ant-divider-horizontal ant-divider-with-text"><span
+                        class="ant-divider-inner-text">我是有底线的 -_-||</span></div>
+              </div>
+            </div>
+
+            <div aria-hidden="false" data-swipeable="true" style="width: 100%; flex-shrink: 0; overflow: auto;">
+              <div>
+                <div class="major">
+                  <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
+                  <div class="wai" th:if="${finish != null}" th:each="n,index:${finish}">
+                    <table>
+                      <tbody>
+                      <tr>
+                        <td class="project-name"><i class="anticon anticon-appstore" style="color: rgb(0, 116, 217);">
+                          <svg viewBox="64 64 896 896" class="" data-icon="appstore" width="1em" height="1em"
+                               fill="currentColor" aria-hidden="true">
+                            <path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path>
+                          </svg>
+                        </i> [[${n.projectName}]]
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="applyTime">申请时间</td>
+                        <td class="value applyTime">[[${#dates.format(n.applicationTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
+                      </tr>
+                      <tr>
+                        <td class="exception1">联系人</td>
+                        <td class="value">[[${n.contactPerson}]]</td>
+                      </tr>
+                      <tr>
+                        <td class="aa">申请编码</td>
+                        <td> [[${n.applicationCoding}]]</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <div class="custom-divider"></div>
+                    <div class="card-control">
+                      <div class="progress">当前进度: <span th:if="${n.status == '2'}">已完成</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-footer">
+                <div class="ant-divider ant-divider-horizontal ant-divider-with-text"><span
+                        class="ant-divider-inner-text">我是有底线的 -_-||</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </nay>
+
+    <div style="display: none;">v2021.8.25-2 LiShengLiang</div>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+    const nay = new Array();
+    $("#siteSubmit").click(function () {
+        let url = '[[${projectName}]]';
+        let projectName = $.trim($("#projectName").val());
+        if (projectName === "") {
+            alert("工程名称不能为空");
+            return false;
+        }
+        let contactPerson = $.trim($("#contactPerson").val());
+        if (contactPerson === "") {
+            alert("联系人不能为空");
+            return false;
+        }
+        let contactNumber = $.trim($("#contactNumber").val());
+        if (contactNumber === "") {
+            alert("联系电话不能为空");
+            return false;
+        }
+        let address = $.trim($("#detailedAddress").val());
+        if (address === "") {
+            alert("地址不能为空");
+            return false;
+        }
+        let applicant = $.trim($("#applicant").val());
+        if (applicant === "") {
+            alert("申请单位不能为空");
+            return false;
+        }
+        let newspaperType = $.trim($("#newspaperType").val());
+        if (newspaperType === "") {
+            alert("申请类型不能为空");
+            return false;
+        }
+        let typeOfWater = $.trim($("#typeOfWater").val());
+        if (typeOfWater === "") {
+            alert("用水类型不能为空");
+            return false;
+        }
+        let numberOfWaterUsers = $.trim($("#numberOfWaterUsers").val());
+        if (numberOfWaterUsers === "") {
+            alert("用水户数不能为空");
+            return false;
+        }
+        let estimatedAmountOfWater = $.trim($("#estimatedAmountOfWater").val());
+        if (estimatedAmountOfWater === "") {
+            alert("估计水量不能为空");
+            return false;
+        }
+
+        var r = /^[0-9]+.?[0-9]*$/;
+        if (!r.test(numberOfWaterUsers)) {
+            alert("用水户数只能是一个数");
+            return false;
+        }
+        if (!r.test(estimatedAmountOfWater)) {
+            alert("估计水量只能是一个数");
+            return false;
+        }
+        let form = new FormData(document.getElementById("newspaperId"));
+        if (form.get("file").name === "") {
+            alert("请上传文件");
+            return false;
+        }
+        $.ajax({
+            url: url + "/bx/submit",
+            data: form,
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            type: 'post',
+            success: function (result) {
+                if (result.result == 0) {
+                    location.href = url + "/bx/transfer";
+                } else {
+                    console.log(result.message)
+                }
+            }
+        })
+        return false;
+    });
+
+    // 更改我的报装的样式
+    function updateBtnStatus(obj) {
+        if (obj == 1) {
+            $(".react-swipeable-view-container")[0].style = "flex-direction: row; transition: transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s; direction: ltr; display: flex; will-change: transform; transform: translate(0%, 0px);";
+            $(".r1")[0].className = "tab-item r1 bes-tab-item-selected";
+            $(".r2")[0].className = "tab-item r2";
+
+        } else if (obj == 2) {
+            $(".react-swipeable-view-container")[0].style = "flex-direction: row; transition: transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s; direction: ltr; display: flex; will-change: transform; transform: translate(-100%, 0px);";
+            $(".r1")[0].className = "tab-item r1";
+            $(".r2")[0].className = "tab-item r2 bes-tab-item-selected";
+        }
+    }
+
+    window.onload = function () {
+        // 获取元素
+        const lis = document.querySelectorAll('li');
+        const pNodes = document.querySelectorAll('nay')
+        if (nay.length == 0) {
+            nay[0] = lis[0];
+            nay[1] = pNodes[0];
+            nay[2] = lis[2];
+            nay[3] = pNodes[2];
+        }
+        // 绑定点击事件
+        for (let i = 0; i < lis.length; i++) {
+            // 这一步是需要设置一个自定义属性索引下标
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function () {
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'active';
+                // 在这里获取索引下标
+                let index = this.getAttribute('index');
+                for (let i = 0; i < pNodes.length; i++) {
+                    pNodes[i].style.display = 'none';
+                }
+                pNodes[index].style.display = 'block';
+            }
+        }
+    }
+</script>
+</html>

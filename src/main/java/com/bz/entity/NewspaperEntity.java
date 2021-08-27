@@ -14,6 +14,8 @@ public class NewspaperEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	public static final String finish = "2";
+
 	private Integer id;
 	/**
 	 * 申请时间
@@ -65,6 +67,8 @@ public class NewspaperEntity implements Serializable {
 	private String material;
 
 	private String verification;
+
+	private String applicationCoding;
 
 	/**
 	 * 状态 0 已提交 1受理中 2已完结 3已退回
@@ -193,5 +197,13 @@ public class NewspaperEntity implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getApplicationCoding() {
+		return applicationCoding;
+	}
+
+	public void setApplicationCoding(String applicationCoding) {
+		this.applicationCoding = applicationCoding;
 	}
 }

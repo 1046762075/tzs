@@ -14,7 +14,7 @@
           <input type="text" name="name" placeholder="输入客户的名称" class="layui-input">
         </div>
         <div class="layui-input-inline" style="width:13%;">
-          <input type="text" name="phone" placeholder="输入客户电话" class="layui-input">
+          <input type="text" name="phone" placeholder="输入客户电话或编码" class="layui-input">
         </div>
         <div class="layui-input-inline" style="width:110px;">
           <input type="text" name="start_date" class="layui-input" placeholder="开始时间" id="date_c1">
@@ -101,6 +101,9 @@
   <a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>未知</a>
   {{#  } }}
 </script>
+<script type="text/html" id="applicationTime">
+  {{layui.util.toDateString(d.applicationTime, 'yyyy-MM-dd')}}
+</script>
 <script>
     layui.use(['table', 'form', 'jquery','laydate'], function () {
         let table = layui.table;
@@ -140,6 +143,8 @@
                 {title: '用水户数', field: 'numberOfWaterUsers', align:'center', width:97, sort: true},
                 {title: '估计水量', field: 'estimatedAmountOfWater', align:'center', width:98, sort: true},
                 {title: '操作', toolbar: '#Newspaper-bar', align:'center', width:180},
+                {title: '时   间', templet: '#applicationTime', align:'center', width:109},
+                {title: '编   码', field: 'applicationCoding', align:'center', width:109},
                 {title: '备   注', field: 'remark', align:'center', width:109}
             ]
         ]
