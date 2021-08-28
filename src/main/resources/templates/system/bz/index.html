@@ -53,14 +53,14 @@
 
 <script type="text/html" id="Newspaper-bar">
   {{#  if(d.status == 0){ }}
-  <a class="layui-btn layui-btn layui-btn-xs" href="{{d.material}}" lay-event="accept">下载</a>
+  <button id="fileDownload" class="layui-btn layui-btn layui-btn-xs" style="font-size: 12px !important;" value="{{d.material}}" lay-event="accept">下载</button>
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
   {{# }  else if(d.status == 1){ }}
   <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply" lay-event="finish">完成</a>
   {{# }  else if(d.status == 2){ }}
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
   {{#  } else if(d.status == 3){ }}
-  <a class="layui-btn layui-btn layui-btn-xs" href="{{d.material}}" lay-event="accept">下载</a>
+  <button id="fileDownload" class="layui-btn layui-btn layui-btn-xs" style="font-size: 12px !important;" value="{{d.material}}" lay-event="accept">下载</button>
   {{#  } }}
 </script>
 
@@ -228,6 +228,10 @@
         }
 
         window.accept = function(obj){
+            let hrefs = ($('#fileDownload').val() + "").split("??");
+            for(let i = 0; i < hrefs.length; i++){
+                window.open(hrefs[i]);
+            }
             let loading = layer.load();
             updateStatus(obj,1)
             layer.close(loading);

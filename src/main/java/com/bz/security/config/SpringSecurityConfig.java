@@ -63,6 +63,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.jpg",
 						"/**/*.png",
                         "/**/*.js",
+						"/other/**",
                         "/druid/**");
     }
 

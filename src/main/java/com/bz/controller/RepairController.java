@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -115,12 +114,8 @@ public class RepairController extends BaseController{
 
 	@ResponseBody
 	@PostMapping("/newspaper/submit")
-	public Object newspaperSubmit(@RequestParam("file") MultipartFile file, NewspaperEntity newspaper, HttpServletRequest request){
+	public Object newspaperSubmit(NewspaperEntity newspaper){
 		try {
-			if (file.isEmpty()) {
-				return new ResultResponse(ResultUtil.RESULT_ERROR,"上传失败，请选择文件");
-			}
-			newspaper.setMaterial(updateFile(file));
 			newspaper.setApplicationTime(new Date());
 			if(this.bxService.submit(newspaper) == 1){
 				return new ResultResponse(ResultUtil.RESULT_SUCCESS, "提交成功");

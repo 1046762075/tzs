@@ -53,7 +53,7 @@
 
 <script type="text/html" id="Customer-bar">
   {{#  if(d.status == 0){ }}
-  <a class="layui-btn layui-btn layui-btn-xs" href="{{d.material}}" style="font-size: 12px !important;" lay-event="accept">下载</a>
+  <button id="fileDownload" class="layui-btn layui-btn layui-btn-xs" style="font-size: 12px !important;" value="{{d.materialOne}}" lay-event="accept">下载</button>
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">驳回</a>
   {{# }  else if(d.status == 1){ }}
   <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply" lay-event="finish">完成</a>
