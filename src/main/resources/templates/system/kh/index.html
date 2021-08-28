@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>报装列表</title>
+  <title>开户列表</title>
   <header th:replace="header::html"></header>
 </head>
 <body class="pear-container">
@@ -10,11 +10,11 @@
   <div class="layui-card-body">
     <form class="layui-form" action="">
       <div class="layui-form-item">
-        <div class="layui-input-inline" style="width:10%;">
-          <input type="text" name="name" placeholder="输入客户的名称" class="layui-input">
+        <div class="layui-input-inline" style="width:15%;">
+          <input type="text" name="handler" placeholder="输入客户的名称或办理人" class="layui-input">
         </div>
         <div class="layui-input-inline" style="width:13%;">
-          <input type="text" name="phone" placeholder="输入客户电话或编码" class="layui-input">
+          <input type="text" name="mobileTelephone" placeholder="输入客户电话或编码" class="layui-input">
         </div>
         <div class="layui-input-inline" style="width:110px;">
           <input type="text" name="start_date" class="layui-input" placeholder="开始时间" id="date_c1">
@@ -27,7 +27,7 @@
           <select name="status" id="status"></select>
         </div>
 
-        <button id="Newspaper-query" class="pear-btn pear-btn-md pear-btn-primary" lay-submit="" lay-filter="Newspaper-query">
+        <button id="Customer-query" class="pear-btn pear-btn-md pear-btn-primary" lay-submit="" lay-filter="Customer-query">
           <i class="layui-icon layui-icon-search"></i>
           查询
         </button>
@@ -45,64 +45,44 @@
   <div class="layui-col-md12">
     <div class="layui-card">
       <div class="layui-card-body">
-        <table id="Newspaper-table" lay-filter="Newspaper-table"></table>
+        <table id="Customer-table" lay-filter="Customer-table"></table>
       </div>
     </div>
   </div>
 </div>
 
-<script type="text/html" id="Newspaper-bar">
+<script type="text/html" id="Customer-bar">
   {{#  if(d.status == 0){ }}
-  <a class="layui-btn layui-btn layui-btn-xs" href="{{d.material}}" lay-event="accept">下载</a>
-  <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
+  <a class="layui-btn layui-btn layui-btn-xs" href="{{d.material}}" style="font-size: 12px !important;" lay-event="accept">下载</a>
+  <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">驳回</a>
   {{# }  else if(d.status == 1){ }}
   <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply" lay-event="finish">完成</a>
   {{# }  else if(d.status == 2){ }}
-  <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
+  <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">驳回</a>
   {{#  } else if(d.status == 3){ }}
-  <a class="layui-btn layui-btn layui-btn-xs" href="{{d.material}}" lay-event="accept">下载</a>
+  <button id="fileDownload" class="layui-btn layui-btn layui-btn-xs" style="font-size: 12px !important;" value="{{d.materialOne}}" lay-event="accept">下载</button>
   {{#  } }}
 </script>
 
-<script type="text/html" id="newspaperTypeBtn">
-  {{#  if(d.newspaperType == 0){ }}
-  <a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>个人或生产经营单位客户新装</a>
-  {{# }  else if(d.newspaperType == 1){ }}
-  <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>新建住宅小区新装</a>
-  {{#  } else if(d.newspaperType == 2){ }}
-  <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs"><i class="layui-icon"></i>一户一表改造</a>
-  {{# }  else if(d.newspaperType == 3){ }}
-  <a class="pear-btn pear-btn-warming pear-btn-sm"><i class="layui-icon"></i>水表迁移工程</a>
-  {{#  } else if(d.newspaperType == 4){ }}
-  <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>临时水安装工程</a>
-  {{#  } else if(d.newspaperType == 5){ }}
-  <a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>未知状态</a>
-  {{#  } }}
-</script>
-
-<script type="text/html" id="typeOfWaterBtn">
-  {{#  if(d.typeOfWater == 1){ }}
-  <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>居民</a>
-  {{#  } else { }}
-  <a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>非居民</a>
-  {{#  } }}
-</script>
-
-<script type="text/html" id="newspaperStatus">
+<script type="text/html" id="CustomerStatus">
   {{#  if(d.status == 0){ }}
   <a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>已提交</a>
   {{# }  else if(d.status == 1){ }}
-  <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>受理中</a>
+  <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>审核中</a>
   {{# }  else if(d.status == 2){ }}
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs"><i class="layui-icon"></i>已完结</a>
   {{# }  else if(d.status == 3){ }}
-  <a class="layui-btn layui-btn-normal layui-btn-disabled layui-btn-xs"><i class="layui-icon"></i>已退回</a>
+  <a class="layui-btn layui-btn-normal layui-btn-disabled layui-btn-xs"><i class="layui-icon"></i>已驳回</a>
   {{#  } else { }}
   <a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>未知</a>
   {{#  } }}
 </script>
-<script type="text/html" id="applicationTime">
-  {{layui.util.toDateString(d.applicationTime, 'yyyy-MM-dd')}}
+<script type="text/html" id="createTime">
+  {{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}
+</script>
+
+<script type="text/html" id="customerPhone">
+    {{d.taxNumber}},{{d.fixedTelephone}}
 </script>
 <script>
     layui.use(['table', 'form', 'jquery','laydate'], function () {
@@ -116,15 +96,14 @@
         laydate.render({
             elem: '#date_c2',
         });
-
         $('#status').append(new Option("状态", ""));
         $('#status').append(new Option("已提交", 0));
-        $('#status').append(new Option("受理中", 1));
+        $('#status').append(new Option("审核中", 1));
         $('#status').append(new Option("已完成", 2));
-        $('#status').append(new Option("已退回", 3));
+        $('#status').append(new Option("已驳回", 3));
 
         layui.form.render("select");
-        form.val("Newspaper", {
+        form.val("Customer", {
             "status": 0,
         });
 
@@ -132,26 +111,22 @@
             [
                 {type:'checkbox'},
                 // {title: 'id', field: 'id', align:'hide',style:'hide', width:1},
-                {title: '工程名称', field: 'projectName', align:'center', width:83},
-                {title: '联系人', field: 'contactPerson', align:'center', width:79},
-                {title: '联系电话', field: 'contactNumber', align:'center',width:110},
-                {title: '地址', field: 'detailedAddress', align:'center',width:118},
-                {title: '申请单位', field: 'applicant', align:'center',width:128},
-                {title: '报装类型', templet: '#newspaperTypeBtn', align:'center', width:97},
-                {title: '用水类型', templet: '#typeOfWaterBtn', align:'center', width:84},
-                {title: '状态', templet: '#newspaperStatus', align:'center', width:85},
-                {title: '用水户数', field: 'numberOfWaterUsers', align:'center', width:97, sort: true},
-                {title: '估计水量', field: 'estimatedAmountOfWater', align:'center', width:98, sort: true},
-                {title: '操作', toolbar: '#Newspaper-bar', align:'center', width:180},
-                {title: '时   间', templet: '#applicationTime', align:'center', width:109},
-                {title: '编   码', field: 'applicationCoding', align:'center', width:109},
-                {title: '备   注', field: 'remark', align:'center', width:109}
+                {title: '客户名称', field: 'name', align:'center', width:110},
+                {title: '地址', field: 'address', align:'center', width:150},
+                {title: '办理人', field: 'handler', align:'center',width:110},
+                {title: '电话/座机', templet: '#customerPhone', align:'center',width:118},
+                {title: '身份证号', field: 'idCard', align:'center',width:128},
+                {title: '税号', field: 'taxNumber', align:'center', width:97},
+                {title: '状态', templet: '#CustomerStatus', align:'center', width:85},
+                {title: '开户时间', templet: '#createTime', align:'center', width:109},
+                {title: '申请编码', field: 'applicationCoding', align:'center', width:109},
+                {title: '操作', toolbar: '#Customer-bar', align:'center', width:160}
             ]
         ]
 
         var tableIns = table.render({
-            elem: '#Newspaper-table',
-            url: projectName + '/pc/verify/newspaper/findList',
+            elem: '#Customer-table',
+            url: projectName + '/pc/verify/customer/findList',
             page: true ,
             method: 'post',
             cols: cols ,
@@ -162,7 +137,7 @@
             }, 'filter', 'print', 'exports'],
         });
 
-        table.on('tool(Newspaper-table)', function(obj) {
+        table.on('tool(Customer-table)', function(obj) {
             if (obj.event === 'accept') {
                 window.accept(obj);
             } else if (obj.event === 'finish') {
@@ -174,36 +149,36 @@
             }
         });
 
-        table.on('toolbar(Newspaper-table)', function (obj) {
+        table.on('toolbar(Customer-table)', function (obj) {
             if (obj.event === 'refresh') {
                 window.refresh();
             }
         });
-        form.on('submit(Newspaper-query)', function(data){
+        form.on('submit(Customer-query)', function(data){
             var formData = data.field;
-            var phone = formData.phone;
-            var	name = formData.name;
+            var handler = formData.handler;
+            var	mobileTelephone = formData.mobileTelephone;
             var	start_date = formData.start_date;
             var	end_date = formData.end_date;
-            var	status = formData.status;
             if(start_date != ''){
                 start_date += " 00:00:00";
             }
             if(end_date != ''){
                 end_date += " 23:59:59";
             }
+            var	status = formData.status;
             tableIns.reload({
                 page: {
                     curr: 1
                 }
                 , where: {
                     "status": status,
+                    "mobileTelephone": mobileTelephone,
+                    "handler": handler,
                     "startTime": start_date,
                     "endTime": end_date,
-                    "contactPerson": name,
-                    "contactNumber": phone,
                 }
-                , url: projectName + '/pc/verify/newspaper/findList'
+                , url: projectName + '/pc/verify/customer/findList'
                 , method: 'post'
             });
             return false;
@@ -211,7 +186,7 @@
 
         function updateStatus(obj, status){
             $.ajax({
-                url: projectName + "/pc/verify/newspaper/updateStatus",
+                url: projectName + "/pc/verify/customer/updateStatus",
                 data: JSON.stringify({id: obj.data.id, status: status}),
                 dataType: "json",
                 contentType: 'application/json',
@@ -224,10 +199,14 @@
                     }
                 }
             })
-            table.reload('Newspaper-table');
+            table.reload('Customer-table');
         }
 
         window.accept = function(obj){
+            let hrefs = ($('#fileDownload').val() + "").split("??");
+            for(let i = 0; i < hrefs.length; i++){
+                window.open(hrefs[i]);
+            }
             let loading = layer.load();
             updateStatus(obj,1)
             layer.close(loading);
@@ -243,16 +222,15 @@
         }
 
         window.return = function(obj){
-            layer.confirm('确定要退回吗?', {icon: 3, title:'提示'}, function(index){
+            layer.confirm('确定要驳回吗?', {icon: 3, title:'提示'}, function(index){
                 layer.close(index);
                 let loading = layer.load();
                 updateStatus(obj,3)
                 layer.close(loading);
             });
         }
-
         window.refresh = function (param) {
-            table.reload('Newspaper-table');
+            table.reload('Customer-table');
         }
     })
 </script>

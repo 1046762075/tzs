@@ -7,7 +7,7 @@
 <link th:href="@{/favicon.ico}" rel="shortcut icon">
 <title>报装-网上报装管理系统</title>
 <link rel="stylesheet" th:href="@{/css/main.65d94d6b.css}"/>
-<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/component/layui/layui.all.js}"></script>
 <script th:src="@{/js/main.ff40bfc6.js}"></script>
 <style type="text/css">html, * {
   -moz-user-select: text !important;
@@ -177,10 +177,12 @@
 
                 </svg></i></button></span></div>
                 <div
-                        class="ant-upload-list ant-upload-list-text"></div></span><div>所需文件:<input id="file-info"
+                        class="ant-upload-list ant-upload-list-text"></div></span><div>所需文件:<input id="file-info" style="display:none"
                                                                                                    type="file"
                                                                                                    name="file"
-                                                                                                   class="ant-btn projectFile"></div></div></span>
+                                                                                                   class="ant-btn projectFile">
+                <label for="file-info" class="ant-btn projectFile">选择文件</label>
+                </div></div></span>
                 </div>
               </div>
             </div>
@@ -377,67 +379,63 @@
 </div>
 </body>
 <script type="text/javascript">
+    let url = '[[${projectName}]]';
+    let $;
+    layui.use(['jquery'], function () {
+        $ = layui.jquery;
+    })
+</script>
+
+<script type="text/javascript">
     const nay = new Array();
     $("#siteSubmit").click(function () {
-        let url = '[[${projectName}]]';
-        let projectName = $.trim($("#projectName").val());
-        if (projectName === "") {
-            alert("工程名称不能为空");
+        if ($.trim($("#projectName").val()) === "") {
+            layer.msg("工程名称不能为空")
             return false;
         }
-        let contactPerson = $.trim($("#contactPerson").val());
-        if(contactPerson === ""){
-            alert("联系人不能为空");
+        if($.trim($("#contactPerson").val()) === ""){
+            layer.msg("联系人不能为空")
             return false;
         }
-        let contactNumber = $.trim($("#contactNumber").val());
-        if(contactNumber === ""){
-            alert("联系电话不能为空");
+        if($.trim($("#contactNumber").val()) === ""){
+            layer.msg("联系电话不能为空")
             return false;
         }
-        let address = $.trim($("#detailedAddress").val());
-        if(address === ""){
-            alert("地址不能为空");
+        if($.trim($("#detailedAddress").val()) === ""){
+            layer.msg("地址不能为空")
             return false;
         }
-        // let applicant = $.trim($("#applicant").val());
-        // if(applicant === ""){
-        //     alert("申请单位不能为空");
-        //     return false;
-        // }
-        let newspaperType = $.trim($("#newspaperType").val());
-        if(newspaperType === ""){
-            alert("申请类型不能为空");
+        if($.trim($("#newspaperType").val()) === ""){
+            layer.msg("申请类型不能为空")
             return false;
         }
-        let typeOfWater = $.trim($("#typeOfWater").val());
-        if(typeOfWater === ""){
-            alert("用水类型不能为空");
+        if($.trim($("#typeOfWater").val()) === ""){
+            layer.msg("用水类型不能为空")
             return false;
         }
         let numberOfWaterUsers = $.trim($("#numberOfWaterUsers").val());
         if(numberOfWaterUsers === ""){
-            alert("用水户数不能为空");
+            layer.msg("用水户数不能为空")
             return false;
         }
         let estimatedAmountOfWater = $.trim($("#estimatedAmountOfWater").val());
         if(estimatedAmountOfWater === ""){
-            alert("估计水量不能为空");
+            layer.msg("估计水量不能为空")
             return false;
         }
 
         var r = /^[0-9]+.?[0-9]*$/;
         if(!r.test(numberOfWaterUsers)){
-            alert("用水户数只能是一个数");
+            layer.msg("用水户数只能是一个数")
             return false;
         }
         if(!r.test(estimatedAmountOfWater)){
-            alert("估计水量只能是一个数");
+            layer.msg("估计水量只能是一个数")
             return false;
         }
         let form = new FormData(document.getElementById("newspaperId"));
         if(form.get("file").name===""){
-            alert("请上传文件");
+            layer.msg("请上传文件")
             return false;
         }
         $.ajax({
@@ -447,9 +445,12 @@
             contentType : false,
             processData : false,
             type: 'post',
+            beforeSend: function () {
+                $('#siteSubmit').attr("disabled", true);
+            },
             success: function (result) {
                 if (result.result == 0) {
-                    location.href = url + "/bx/openAnAccount";
+                    location.href = url + "/bx/newspaper";
                 } else {
                     console.log(result.message)
                 }

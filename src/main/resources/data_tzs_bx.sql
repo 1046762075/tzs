@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 27/08/2021 20:16:06
+ Date: 28/08/2021 15:22:12
 */
 
 SET NAMES utf8mb4;
@@ -32,18 +32,21 @@ CREATE TABLE `customer`  (
   `tax_number` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '税号',
   `verification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   `application_coding` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '申请编码',
-  `material_one` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料一',
-  `material_two` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料二',
-  `material_three` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料三',
+  `material_one` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料一',
+  `material_two` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料二',
+  `material_three` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料三',
   `status` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '状态 0 已提交 1 审核中 2 已完成  3 已驳回',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '开户时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES (1, '2', '2', '2', '2', '2', '2', '2', '18173516309', '2', '2', '2', '2', '2', '2021-08-27 19:50:14');
+INSERT INTO `customer` VALUES (1, '2', '2', '2', '2', '2', '2', '2', '18173516309', '2', '2', '2', '2', '1', '2021-08-27 19:50:14');
+INSERT INTO `customer` VALUES (2, 'FILA 斐乐女鞋专柜正品2020秋季新款复古运动鞋老爹鞋F12W034120', '1', '1', '1', '1', '1', '1', '18173516309', '20210828458', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '2', '2021-08-28 11:17:19');
+INSERT INTO `customer` VALUES (3, '11', '1', '1', '1', '1', '1', '1', '18173516309', '20210828534', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '3', '2021-08-28 12:11:30');
+INSERT INTO `customer` VALUES (4, 'FILA 斐乐女鞋专柜正品2020秋季', '哇', '1da我', '哎喂d', '哎喂', '', '', '123', '20210828957', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '1', '2021-08-28 12:21:42');
 
 -- ----------------------------
 -- Table structure for my_menu
@@ -61,16 +64,17 @@ CREATE TABLE `my_menu`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 152 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of my_menu
 -- ----------------------------
+INSERT INTO `my_menu` VALUES (1, 0, '业务办理', 'layui-icon layui-icon layui-icon layui-icon-component', '', '', 1, 0, '2021-08-23 23:15:46', '2021-05-11 18:18:13');
 INSERT INTO `my_menu` VALUES (3, 0, '系统管理', 'layui-icon layui-icon-set-fill', '', 'system:user', 3, 0, '2021-08-23 23:15:46', '2020-07-12 21:03:22');
 INSERT INTO `my_menu` VALUES (4, 3, '人员列表', 'layui-icon layui-icon layui-icon layui-icon layui-icon-username', 'pc/user/index', 'user:list', 1, 1, '2021-08-23 23:15:46', '2021-03-15 10:32:05');
+INSERT INTO `my_menu` VALUES (5, 1, '报装列表', 'layui-icon layui-icon layui-icon layui-icon-cellphone', 'pc/verify/newspaper/index', '', 1, 1, '2021-08-23 23:15:46', '2021-05-11 18:09:54');
 INSERT INTO `my_menu` VALUES (6, 3, '菜单管理', 'layui-icon layui-icon-vercode', 'pc/menu/index', 'menu:list', 6, 1, '2021-08-23 23:15:46', '2020-07-10 09:34:53');
-INSERT INTO `my_menu` VALUES (92, 0, '报装中心', 'layui-icon layui-icon layui-icon layui-icon-component', '', '', 1, 0, '2021-08-23 23:15:46', '2021-05-11 18:18:13');
-INSERT INTO `my_menu` VALUES (96, 92, '报装列表', 'layui-icon layui-icon layui-icon layui-icon-cellphone', 'pc/verify/index', '', 1, 1, '2021-08-23 23:15:46', '2021-05-11 18:09:54');
+INSERT INTO `my_menu` VALUES (7, 1, '开户列表', 'layui-icon layui-icon layui-icon layui-icon-cellphone', 'pc/verify/openAnAccount/index', '', 2, 1, '2021-08-23 23:15:46', '2021-05-11 18:09:54');
 
 -- ----------------------------
 -- Table structure for my_role
@@ -84,7 +88,7 @@ CREATE TABLE `my_role`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `data_scope` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of my_role
@@ -105,13 +109,14 @@ CREATE TABLE `my_role_menu`  (
 -- ----------------------------
 -- Records of my_role_menu
 -- ----------------------------
+INSERT INTO `my_role_menu` VALUES (1, 1);
 INSERT INTO `my_role_menu` VALUES (1, 3);
 INSERT INTO `my_role_menu` VALUES (1, 4);
+INSERT INTO `my_role_menu` VALUES (1, 5);
 INSERT INTO `my_role_menu` VALUES (1, 6);
-INSERT INTO `my_role_menu` VALUES (1, 92);
-INSERT INTO `my_role_menu` VALUES (1, 96);
-INSERT INTO `my_role_menu` VALUES (2, 92);
-INSERT INTO `my_role_menu` VALUES (2, 96);
+INSERT INTO `my_role_menu` VALUES (1, 7);
+INSERT INTO `my_role_menu` VALUES (2, 1);
+INSERT INTO `my_role_menu` VALUES (2, 5);
 
 -- ----------------------------
 -- Table structure for my_role_user
@@ -127,7 +132,8 @@ CREATE TABLE `my_role_user`  (
 -- Records of my_role_user
 -- ----------------------------
 INSERT INTO `my_role_user` VALUES (1, 1);
-INSERT INTO `my_role_user` VALUES (419, 2);
+INSERT INTO `my_role_user` VALUES (2, 2);
+INSERT INTO `my_role_user` VALUES (3, 2);
 
 -- ----------------------------
 -- Table structure for my_user
@@ -148,14 +154,14 @@ CREATE TABLE `my_user`  (
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系地址',
   `is_del` int(1) NULL DEFAULT NULL COMMENT '是否删除 0 否 1 是',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 422 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of my_user
 -- ----------------------------
 INSERT INTO `my_user` VALUES (1, 'admin', '$2a$10$DKnVhm/T4CrJTyb.K18HeeLHEC.7uvEpwAuFOxJNUNgZUeOo0QsRy', 'admin', '18173516309', 1, '2021-08-23 09:42:03', '2021-08-25 18:19:18', NULL, '10.43.1.1', 296, '暂无地址', 0);
-INSERT INTO `my_user` VALUES (153, '周璐', '$2a$10$DKnVhm/T4CrJTyb.K18HeeLHEC.7uvEpwAuFOxJNUNgZUeOo0QsRy', '周璐', '18565852266', 1, '2021-08-22 10:42:31', '2021-08-25 18:14:24', '2021-04-25 20:31:06', '42.49.174.51', 1610, '五岭阁', 0);
-INSERT INTO `my_user` VALUES (154, '林光亮', '$2a$10$0mR8uLyas9bC8F15sH/WtuZQxq6MJjjvLgnFQEHAZHZvC.15CVjra', '林光亮', '13047223392', 1, '2021-08-22 10:44:15', '2021-08-25 17:16:16', '2021-04-25 20:43:30', '8.129.184.128', 970, '高亭司高冲村19组', 0);
+INSERT INTO `my_user` VALUES (2, '周璐', '$2a$10$DKnVhm/T4CrJTyb.K18HeeLHEC.7uvEpwAuFOxJNUNgZUeOo0QsRy', '周璐', '18565852266', 1, '2021-08-22 10:42:31', '2021-08-25 18:14:24', '2021-04-25 20:31:06', '42.49.174.51', 1610, '五岭阁', 0);
+INSERT INTO `my_user` VALUES (3, '林光亮', '$2a$10$0mR8uLyas9bC8F15sH/WtuZQxq6MJjjvLgnFQEHAZHZvC.15CVjra', '林光亮', '13047223392', 1, '2021-08-22 10:44:15', '2021-08-25 17:16:16', '2021-04-25 20:43:30', '8.129.184.128', 970, '高亭司高冲村19组', 0);
 
 -- ----------------------------
 -- Table structure for newspaper
@@ -179,21 +185,22 @@ CREATE TABLE `newspaper`  (
   `status` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '状态 0 已提交 1受理中 2已完结 3已退回',
   `application_coding` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '申请编码',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of newspaper
 -- ----------------------------
 INSERT INTO `newspaper` VALUES (10, '2021-08-23 00:00:00', 'test', 'rr', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '1', '3', '2222');
-INSERT INTO `newspaper` VALUES (11, '2021-08-23 00:00:00', 'test', 'lsl', '123', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '2', '2', '1');
-INSERT INTO `newspaper` VALUES (12, '2021-08-23 00:00:00', 'test', 'hh', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '18173516309', '1', '1');
+INSERT INTO `newspaper` VALUES (11, '2021-08-23 00:00:00', 'test', 'lsl', '123', '长沙雨花区', '四时生生', 2, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '2', '2', '1');
+INSERT INTO `newspaper` VALUES (12, '2021-08-23 00:00:00', 'test', 'hh', '18173516309', '长沙雨花区', '四时生生', 4, 2, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '18173516309', '1', '1');
 INSERT INTO `newspaper` VALUES (13, '2021-08-23 00:00:00', 'test', 'lsl', '18173516309', '长沙雨花区', '四时生生', 1, 1, 10, 54, NULL, 'https://xiazai.sogou.com/comm/redir?softdown=1&u=5M778mNuk-IR5IpbEw6j9YpS1Wc4Ved3WXa85rh1XgyheSu4KSc873XX-0eLlV_4wScdwqbg5EVsipUd8ZPGCKrHmAlohI-ZdTnqogy02lfO1qgEiXFMzWYGOMRRI9VQniF5_tMpLpNKNrbuIcvX44SnDc4QRtSS8YpZz1ZUJWAtEqX99Vd8G_Y2oIxrJvgHLzBAvXfQq_mJU6guPZ3epw..&pcid=1882834511144817344&filename=QQMusic_Setup_1822.5311_QMgr.exe&source=tencent&w=1907&stamp=20210825', '18173516309', '2', '1');
-INSERT INTO `newspaper` VALUES (41, '2021-08-27 09:05:07', '1', '1', '1', '1', '1', 0, 1, 1, 1, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154403.jpg', '18173516309', '0', '1');
-INSERT INTO `newspaper` VALUES (51, '2021-08-27 17:15:36', '阿瓦达123', '2 ', '3 ', '3 ', '我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '2021082717153584');
+INSERT INTO `newspaper` VALUES (41, '2021-08-27 09:05:07', '1', '1', '1', '1', '1', 0, 2, 1, 1, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154403.jpg', '18173516309', '0', '1');
+INSERT INTO `newspaper` VALUES (51, '2021-08-27 17:15:36', '阿瓦达123', '2 ', '3 ', '3 ', '我', 4, 2, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '2021082717153584');
 INSERT INTO `newspaper` VALUES (52, '2021-08-27 17:16:09', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171608158');
-INSERT INTO `newspaper` VALUES (53, '2021-08-27 17:16:55', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171655469');
-INSERT INTO `newspaper` VALUES (54, '2021-08-27 17:17:30', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171729634');
-INSERT INTO `newspaper` VALUES (55, '2021-08-27 17:20:22', '阿瓦达', '123', '哎喂', '哇', '我', 0, 1, 11, 111, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '12', '0', '20210827172022911');
-INSERT INTO `newspaper` VALUES (56, '2021-08-27 17:22:56', '有意思', '晋级赛', '1557334612', 'URH很费劲的', '就放假大家', 0, 1, 11, 1212, '', 'C:\\Java\\Spring\\upload\\-1977af8857e7ef42.jpg', '18173516309', '0', '20210827172255233');
+INSERT INTO `newspaper` VALUES (53, '2021-08-27 17:16:55', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 2, 1, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '1', '20210827171655469');
+INSERT INTO `newspaper` VALUES (54, '2021-08-27 17:17:30', '阿瓦达123', '我啊', '3 我', '3 我', '我我', 0, 2, 111, 12, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '18173516309', '0', '20210827171729634');
+INSERT INTO `newspaper` VALUES (55, '2021-08-27 17:20:22', '阿瓦达', '123', '哎喂', '哇', '我', 3, 1, 11, 111, '', 'C:\\Java\\Spring\\upload\\QQ图片20210730154354.jpg', '12', '0', '20210827172022911');
+INSERT INTO `newspaper` VALUES (56, '2021-08-27 17:22:56', '有意思', '晋级赛', '1557334612', 'URH很费劲的', '就放假大家', 0, 1, 11, 1212, '', 'C:\\Java\\Spring\\upload\\-1977af8857e7ef42.jpg', '18173516309', '2', '20210827172255233');
+INSERT INTO `newspaper` VALUES (57, '2021-08-28 11:32:21', '1', '1', '1', '1', '2', 0, 1, 2, 2, '', 'C:\\Java\\Spring\\upload\\210828722QQ图片20210730154403.jpg', '18173516309', '3', '20210828868');
 
 SET FOREIGN_KEY_CHECKS = 1;

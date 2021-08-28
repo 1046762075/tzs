@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="utf-8">
-  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/component/layui/layui.all.js}"></script>
   <title>登录</title>
   <style>
     body {
@@ -57,12 +57,19 @@
 </body>
 <script type="text/javascript">
     let url = '[[${projectName}]]';
+    let $;
+    layui.use(['jquery'], function () {
+        $ = layui.jquery;
+    })
+    if(url == ''){
+        url = "/tzs";
+    }
     $("#loginId").click(function () {
         let flag = true;
         document.forms.myForm.action = url + '/bx/index/' + $("#verification").val();
         $("input[type='text']").each(function(i,item){
             if(item.value == ""){
-                alert("请输入账号");
+                layer.msg("请输入账号")
                 flag = false;
             }
         });

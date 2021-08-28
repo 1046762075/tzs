@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bz.dao.CustomerDao">
-
-	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.bz.entity.CustomerEntity" id="customerMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
@@ -21,10 +19,41 @@
         <result property="status" column="status"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
-
+    <insert id="submit">
+        INSERT customer(name, address, handler,
+        mobile_telephone, fixed_telephone, id_card,
+        tax_number, verification, application_coding,
+        material_one, material_two, material_three,status, create_time)
+        values(#{name},#{address},#{handler},
+        #{mobileTelephone},#{fixedTelephone},#{idCard},
+        #{taxNumber},#{verification},#{applicationCoding},
+        #{materialOne},#{materialTwo},#{materialThree},#{status},#{createTime})
+    </insert>
+    <update id="updateStatus">
+        UPDATE customer set status = #{status} where id = #{id}
+    </update>
     <select id="findOpenAnAccount" resultType="com.bz.entity.CustomerEntity">
         SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.status, c.create_time
         FROM customer c
         WHERE c.verification = #{verification} order by c.create_time desc
+    </select>
+    <select id="getFuzzyCustomerByPage" resultType="com.bz.entity.CustomerEntity">
+        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, concat_ws('??', c.material_one, c.material_two, c.material_three) as material_one, c.status, c.create_time
+        FROM customer c
+        <where>
+            <if test="status != null and status != ''">
+                AND c.status = #{status}
+            </if>
+            <if test="handler != null and handler != ''">
+                AND c.handler like CONCAT('%', #{handler}, '%') or c.name like CONCAT('%', #{handler}, '%')
+            </if>
+            <if test="mobileTelephone != null and mobileTelephone != ''">
+                AND c.mobile_telephone like CONCAT('%', #{mobileTelephone}, '%') or c.application_coding like CONCAT('%', #{mobileTelephone}, '%') or c.fixed_telephone like CONCAT('%', #{mobileTelephone}, '%')
+            </if>
+            <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+                AND c.create_time between #{startTime} and #{endTime}
+            </if>
+        </where>
+        order by c.create_time desc
     </select>
 </mapper>

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -91,20 +92,21 @@ public class RepairController extends BaseController{
 			return new ResultResponse(ResultUtil.RESULT_ERROR,"上传失败，请选择文件");
 		}
 		String name = updateFile(file);
-		if (name != null) return new ResultResponse(ResultUtil.RESULT_SUCCESS, name);
-		return new ResultResponse(ResultUtil.RESULT_ERROR,"上传成功");
+		if (name != null) return new ResultResponse(ResultUtil.RESULT_SUCCESS, "上传成功", name);
+		return new ResultResponse(ResultUtil.RESULT_ERROR,"上传失败");
 	}
 
 	private String updateFile(@RequestParam("file") MultipartFile file) {
+		Random random = new Random();
 		String fileName = file.getOriginalFilename();
-		String date = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		File dest = new File(date + filePath + fileName);
+		String date = new SimpleDateFormat("yyMMdd").format(new Date()) + random.nextInt(1000);
+		File dest = new File(filePath + date + fileName);
 		if (!dest.getParentFile().exists()) {
 			dest.getParentFile().mkdirs();
 		}
 		try {
 			file.transferTo(dest);
-			return domain + date + filePath + fileName;
+			return domain + filePath + date + fileName;
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -113,7 +115,7 @@ public class RepairController extends BaseController{
 
 	@ResponseBody
 	@PostMapping("/newspaper/submit")
-	public Object submit(@RequestParam("file") MultipartFile file, NewspaperEntity newspaper, HttpServletRequest request){
+	public Object newspaperSubmit(@RequestParam("file") MultipartFile file, NewspaperEntity newspaper, HttpServletRequest request){
 		try {
 			if (file.isEmpty()) {
 				return new ResultResponse(ResultUtil.RESULT_ERROR,"上传失败，请选择文件");
@@ -164,8 +166,31 @@ public class RepairController extends BaseController{
 		return "app/kh/openAnAccount";
 	}
 
-
-
+	@ResponseBody
+	@PostMapping("/openAnAccount/submit")
+	public Object openAnAccountSubmit(CustomerEntity customer){
+		try {
+			String[] materials = customer.getMaterialOne().split("\\?");
+			if(materials.length < 2){
+				return new ResultResponse(ResultUtil.RESULT_ERROR, "请至少上传两种资料");
+			}
+			customer.setMaterialOne(materials[0]);
+			customer.setMaterialTwo(materials[1]);
+			customer.setVerification((String) getSession().getAttribute("verification"));
+			if(materials.length > 2){
+				customer.setMaterialThree(materials[2]);
+			}
+			customer.setCreateTime(new Date());
+			if(this.customerService.submit(customer) == 1){
+				return new ResultResponse(ResultUtil.RESULT_SUCCESS, "提交成功");
+			} else {
+				return new ResultResponse(ResultUtil.RESULT_ERROR, "提交失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResultResponse(ResultUtil.RESULT_ERROR, e.getMessage());
+		}
+	}
 
 
 

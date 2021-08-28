@@ -39,8 +39,8 @@ public class BzService {
 	/**
 	 * 客服人员查询查询所有客户的报装列表
 	 */
-	public Result<NewspaperEntity> findList(Integer offect, Integer limit,NewspaperDto newspaperDto) {
-		Page page = PageHelper.offsetPage(offect, limit);
+	public Result<NewspaperEntity> findList(Integer offset, Integer limit,NewspaperDto newspaperDto) {
+		Page page = PageHelper.offsetPage(offset, limit);
 		List<NewspaperEntity> fuzzyNewspaperByPage = newspaperDao.getFuzzyNewspaperByPage(newspaperDto);
 		return Result.ok().count(page.getTotal()).data(fuzzyNewspaperByPage).code(ResultUtil.RESULT_SUCCESS);
 	}

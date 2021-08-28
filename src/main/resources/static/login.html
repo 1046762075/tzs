@@ -5,14 +5,6 @@
   <title>桶 装 水 后 台 登 录</title>
   <link rel="stylesheet" href="admin/css/other/login.css" />
   <link rel="stylesheet" href="component/layui/css/layui.css"/>
-  <style>
-    .Footer {
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      padding: 15px 0;
-    }
-  </style>
 </head>
 
 <body background="admin/images/back.png" style="background-size: cover;">
@@ -55,9 +47,6 @@
     layui.use(['form', 'jquery'], function () {
         var form = layui.form;
         var $ = layui.jquery;
-        // $("body").on("click",".login",function(obj){
-        // 	location.href="/api/admin"
-        // })
         form.verify({
             username: function (value) {
 				if (value.length <= 0 ) {

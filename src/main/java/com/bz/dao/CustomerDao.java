@@ -1,5 +1,6 @@
 package com.bz.dao;
 
+import com.bz.dto.CustomerDto;
 import com.bz.entity.CustomerEntity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,4 +16,10 @@ import java.util.List;
 public interface CustomerDao {
 
 	List<CustomerEntity> findOpenAnAccount(String verification);
+
+	int submit(CustomerEntity customer);
+
+	List<CustomerEntity> getFuzzyCustomerByPage(CustomerDto customerDto);
+
+	int updateStatus(CustomerDto customerDto);
 }

@@ -7,7 +7,7 @@
 <link th:href="@{/favicon.ico}" rel="shortcut icon">
 <title>报装-网上过户管理系统</title>
 <link rel="stylesheet" th:href="@{/css/main.65d94d6b.css}"/>
-<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/component/layui/layui.all.js}"></script>
 <script th:src="@{/js/main.ff40bfc6.js}"></script>
 <style type="text/css">html, * {
   -moz-user-select: text !important;
@@ -29,102 +29,102 @@
     </div>
     <nay style="display: block;">
       <div class="wx-content">
-        <form id="newspaperId" class="ant-form ant-form-horizontal wx-applyform">
+        <form id="openAnAccountId" class="ant-form ant-form-horizontal wx-applyform">
           <div class="applyform-unit">
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="ProjectName" title="用户名称">用户名称</label>
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="name" title="用户名称">用户名称</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="projectName"
+                                                                                               id="name"
                                                                                                placeholder="必须与身份证或营业执照一致"
                                                                                                type="text"
-                                                                                               name="projectName"></span>
+                                                                                               name="name"></span>
                 </div>
               </div>
             </div>
             <div class="ant-row ant-form-item form-exception1">
-              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="contactPerson"
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="address"
                                                                 title="用水地址">用水地址</label></div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="contactPerson"
+                                                                                               id="address"
                                                                                                placeholder="如：xxx街xxx路xx号xx小区xx楼xx单元xxx"
                                                                                                type="text"
-                                                                                               name="contactPerson"></span>
+                                                                                               name="address"></span>
                 </div>
               </div>
             </div>
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="contactNumber"
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="handler"
                                                                 title="办理人">办理人</label></div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="contactNumber"
+                                                                                               id="handler"
                                                                                                placeholder="请输入办理人"
                                                                                                type="text"
-                                                                                               name="contactNumber"></span>
+                                                                                               name="handler"></span>
                 </div>
               </div>
             </div>
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="detailedAddress"
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="mobileTelephone"
                                                                 title="移动电话">移动电话</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input
                         class="ant-input" data-__field="[object Object]" data-__meta="[object Object]"
-                        id="detailedAddress"
-                        placeholder="请输入移动电话" type="text" name="detailedAddress"></span></div>
+                        id="mobileTelephone"
+                        placeholder="请输入移动电话" type="text" name="mobileTelephone"></span></div>
               </div>
             </div>
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="applicant" title="固定电话">固定电话</label>
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="fixedTelephone" title="固定电话">固定电话</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="applicant"
+                                                                                               id="fixedTelephone"
                                                                                                placeholder="请输入固定电话"
                                                                                                type="text"
-                                                                                               name="applicant"></span>
+                                                                                               name="fixedTelephone"></span>
                 </div>
               </div>
             </div>
 
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="applicant" title="身份证号">身份证号</label>
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="idCard" title="身份证号">身份证号</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="applicant"
+                                                                                               id="idCard"
                                                                                                placeholder="请输入身份证号"
                                                                                                type="text"
-                                                                                               name="applicant"></span>
+                                                                                               name="idCard"></span>
                 </div>
               </div>
             </div>
 
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="applicant" title="税号">税号</label>
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="taxNumber" title="税号">税号</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="applicant"
+                                                                                               id="taxNumber"
                                                                                                placeholder="请输入税号"
                                                                                                type="text"
-                                                                                               name="applicant"></span>
+                                                                                               name="taxNumber"></span>
                 </div>
               </div>
             </div>
@@ -132,29 +132,33 @@
           <p class="wx-upload-title">上传资料</p>
           <div class="applyform-unit">
             <div class="ant-row ant-form-item">
-              <div class="ant-form-item-control-wrapper">
-                <div class="ant-form-item-control"><span class="ant-form-item-children"><span class=""><div
-                        class="ant-upload ant-upload-select ant-upload-select-text"><span tabindex="0"
-                                                                                          class="ant-upload"
-                                                                                          role="button"><input
-                        type="file" accept="" style="display: none;"><button type="button" class="ant-btn"><i
-                        class="anticon anticon-upload" style="font-size: 16px;"><svg viewBox="64 64 896 896" class=""
-                                                                                     data-icon="upload" width="1em"
-                                                                                     height="1em" fill="currentColor"
-                                                                                     aria-hidden="true"><path
-                        d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path></svg></i><span>点击上传</span></button></span></div><div
-                        class="ant-upload-list ant-upload-list-text"></div></span><div
-                        style="color: blue; font-size: 10px; line-height: 20px;"><div
-                        style="margin-bottom: 8px; margin-top: 8px;">居民用户请上传：<br>1、户主身份证照片正反面 <br>2、物业证明 <br></div><div
-                        style="margin-bottom: 8px; margin-top: 8px;">单位用户请上传：<br>1、单位营业执照正（副）本、盖公章<br>2、办理人身份证<br>3、物业证明</div></div></span>
+              <div class="ant-col-18 ant-form-item-control-wrapper">
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><div
+                        class="applyform-upload"><span class=""><div
+                        class="ant-upload ant-upload-select ant-upload-select-text"><span class="ant-upload" role="button"
+                                                                                          tabindex="0">
+
+                </svg></i></button></span></div>
+                <div class="ant-upload-list ant-upload-list-text"></div></span><div>所需文件:
+                  <button type="button" style="display:none" class="layui-btn pear-btn-success pear-reply" id="material">
+                    <i class="layui-icon" style="display:none">&#xe67c;</i>上传
+                  </button>
+            <input type="hidden" name="materialOne" id="materialUrl" value="">
+                </div></div></span>
+                  <div
+                          class="ant-upload-list ant-upload-list-text"></div></span><div
+                          style="color: blue; font-size: 10px; line-height: 20px;"><div
+                          style="margin-bottom: 8px; margin-top: 8px;">居民用户请上传：<br>1、户主身份证照片正反面 <br>2、物业证明 <br></div><div
+                          style="margin-bottom: 8px; margin-top: 8px;">单位用户请上传：<br>1、单位营业执照正（副）本、盖公章<br>2、办理人身份证<br>3、物业证明</div></div></span>
                 </div>
               </div>
             </div>
           </div>
+
+
           <div class="contact-info">如有疑问请咨询18173516309</div>
           <div class="wx-apply-footer">
-            <!--          <button class="ant-btn footer-btn" type="button"><span>保 存</span></button>-->
-            <button id="siteSubmit" class="ant-btn footer-btn ant-btn-primary"><span>提 交</span></button>
+            <button id="openAnAccountSubmit" class="ant-btn footer-btn ant-btn-primary"><span>提 交</span></button>
           </div>
         </form>
       </div>
@@ -210,11 +214,10 @@
 
             <div aria-hidden="false" data-swipeable="true" style="width: 100%; flex-shrink: 0; overflow: auto;">
               <div>
-                <!--                <div style="display: none;">-->
                 <div class="major">
                   <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
 
-                  <div class="wai" th:if="${newspapers != null}" th:each="n,index:${newspapers}">
+                  <div class="wai" th:if="${customers != null}" th:each="c,index:${customers}">
                     <table>
                       <tbody>
                       <tr>
@@ -223,38 +226,30 @@
                                fill="currentColor" aria-hidden="true">
                             <path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path>
                           </svg>
-                        </i> [[${n.projectName}]]
+                        </i> [[${c.name}]]
                         </td>
                       </tr>
                       <tr>
                         <td class="applyTime">申请时间</td>
-                        <td class="value applyTime">[[${#dates.format(n.applicationTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
+                        <td class="value applyTime">[[${#dates.format(c.createTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
                       </tr>
                       <tr>
-                        <td class="exception1">联系人</td>
-                        <td class="value">[[${n.contactPerson}]]</td>
+                        <td class="exception1">办理人</td>
+                        <td class="value">[[${c.handler}]]</td>
                       </tr>
                       <tr>
                         <td class="aa">申请编码</td>
-                        <td> [[${n.applicationCoding}]]</td>
+                        <td> [[${c.applicationCoding}]]</td>
                       </tr>
                       </tbody>
                     </table>
                     <div class="custom-divider"></div>
                     <div class="card-control">
                       <div class="progress">当前进度:
-                        <span th:if="${n.status == '0'}">提交申请</span>
-                        <span th:if="${n.status == '1'}">受理中</span>
-                        <span th:if="${n.status == '3'}">已退回</span>
+                        <span th:if="${c.status == '0'}">提交申请</span>
+                        <span th:if="${c.status == '1'}">受理中</span>
+                        <span th:if="${c.status == '3'}">已驳回</span>
                       </div>
-                      <!--                      <div class="control-link"><i class="anticon anticon-clock-circle">-->
-                      <!--                        <svg viewBox="64 64 896 896" class="" data-icon="clock-circle" width="1em" height="1em"-->
-                      <!--                             fill="currentColor" aria-hidden="true">-->
-                      <!--                          <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>-->
-                      <!--                          <path d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"></path>-->
-                      <!--                        </svg>-->
-                      <!--                      </i> 流程进度-->
-                      <!--                      </div>-->
                     </div>
                   </div>
                 </div>
@@ -269,7 +264,7 @@
               <div>
                 <div class="major">
                   <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
-                  <div class="wai" th:if="${finish != null}" th:each="n,index:${finish}">
+                  <div class="wai" th:if="${finish != null}" th:each="c,index:${finish}">
                     <table>
                       <tbody>
                       <tr>
@@ -278,26 +273,26 @@
                                fill="currentColor" aria-hidden="true">
                             <path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path>
                           </svg>
-                        </i> [[${n.projectName}]]
+                        </i> [[${c.name}]]
                         </td>
                       </tr>
                       <tr>
                         <td class="applyTime">申请时间</td>
-                        <td class="value applyTime">[[${#dates.format(n.applicationTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
+                        <td class="value applyTime">[[${#dates.format(c.createTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
                       </tr>
                       <tr>
-                        <td class="exception1">联系人</td>
-                        <td class="value">[[${n.contactPerson}]]</td>
+                        <td class="exception1">办理人</td>
+                        <td class="value">[[${c.handler}]]</td>
                       </tr>
                       <tr>
                         <td class="aa">申请编码</td>
-                        <td> [[${n.applicationCoding}]]</td>
+                        <td> [[${c.applicationCoding}]]</td>
                       </tr>
                       </tbody>
                     </table>
                     <div class="custom-divider"></div>
                     <div class="card-control">
-                      <div class="progress">当前进度: <span th:if="${n.status == '2'}">已完成</span></div>
+                      <div class="progress">当前进度: <span th:if="${c.status == '2'}">已完成</span></div>
                     </div>
                   </div>
                 </div>
@@ -318,71 +313,63 @@
 </div>
 </body>
 <script type="text/javascript">
-    const nay = new Array();
-    $("#siteSubmit").click(function () {
-        let url = '[[${projectName}]]';
-        let projectName = $.trim($("#projectName").val());
-        if (projectName === "") {
-            alert("工程名称不能为空");
-            return false;
-        }
-        let contactPerson = $.trim($("#contactPerson").val());
-        if (contactPerson === "") {
-            alert("联系人不能为空");
-            return false;
-        }
-        let contactNumber = $.trim($("#contactNumber").val());
-        if (contactNumber === "") {
-            alert("联系电话不能为空");
-            return false;
-        }
-        let address = $.trim($("#detailedAddress").val());
-        if (address === "") {
-            alert("地址不能为空");
-            return false;
-        }
-        let applicant = $.trim($("#applicant").val());
-        if (applicant === "") {
-            alert("申请单位不能为空");
-            return false;
-        }
-        let newspaperType = $.trim($("#newspaperType").val());
-        if (newspaperType === "") {
-            alert("申请类型不能为空");
-            return false;
-        }
-        let typeOfWater = $.trim($("#typeOfWater").val());
-        if (typeOfWater === "") {
-            alert("用水类型不能为空");
-            return false;
-        }
-        let numberOfWaterUsers = $.trim($("#numberOfWaterUsers").val());
-        if (numberOfWaterUsers === "") {
-            alert("用水户数不能为空");
-            return false;
-        }
-        let estimatedAmountOfWater = $.trim($("#estimatedAmountOfWater").val());
-        if (estimatedAmountOfWater === "") {
-            alert("估计水量不能为空");
-            return false;
-        }
+    var url = '[[${projectName}]]';
+    var $;
+    layui.use(['jquery','upload'], function () {
+        let upload = layui.upload;
+        $ = layui.jquery;
+        upload.render({
+            elem: '#material'
+            , url: url + '/bx/upload'
+            , accept: 'file'
+            , done: function (res) {
+                if (res.result == 0) {
+                    let url = $("#materialUrl").val();
+                    if(url != ''){
+                        $("#materialUrl").val(url + '?' + res.data)
+                    } else {
+                        $("#materialUrl").val(res.data)
+                    }
+                }
+                layer.msg(res.message);
+            }
+            , error: function (res) {
+                console.log(res);
+            }
+        });
+    })
+</script>
 
-        var r = /^[0-9]+.?[0-9]*$/;
-        if (!r.test(numberOfWaterUsers)) {
-            alert("用水户数只能是一个数");
+<script type="text/javascript">
+    const nay = new Array();
+    $("#openAnAccountSubmit").click(function () {
+        let name = $.trim($("#name").val());
+        if (name === "") {
+            layer.msg("用户名称不能为空")
             return false;
         }
-        if (!r.test(estimatedAmountOfWater)) {
-            alert("估计水量只能是一个数");
+        let cAddress = $.trim($("#address").val());
+        if (cAddress === "") {
+            layer.msg("用水地址不能为空")
             return false;
         }
-        let form = new FormData(document.getElementById("newspaperId"));
-        if (form.get("file").name === "") {
-            alert("请上传文件");
+        let handler = $.trim($("#handler").val());
+        if (handler === "") {
+            layer.msg("办理人不能为空")
+            return false;
+        }
+        let mobileTelephone = $.trim($("#mobileTelephone").val());
+        if (mobileTelephone === "") {
+            layer.msg("移动电话不能为空")
+            return false;
+        }
+        let form = new FormData(document.getElementById("openAnAccountId"));
+        if (form.get("materialOne").name === "") {
+            layer.msg("请上传文件")
             return false;
         }
         $.ajax({
-            url: url + "/bx/submit",
+            url: url + "/bx/openAnAccount/submit",
             data: form,
             dataType: "json",
             contentType: false,
@@ -390,9 +377,9 @@
             type: 'post',
             success: function (result) {
                 if (result.result == 0) {
-                    location.href = url + "/bx/transfer";
+                    location.href = url + "/bx/openAnAccount";
                 } else {
-                    console.log(result.message)
+                    layer.msg(result.message)
                 }
             }
         })
