@@ -56,4 +56,9 @@
         </where>
         order by c.create_time desc
     </select>
+    <select id="getBzById" resultType="com.bz.entity.CustomerEntity">
+        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.status, c.create_time
+        FROM my_customer c
+        WHERE id = #{id}
+    </select>
 </mapper>

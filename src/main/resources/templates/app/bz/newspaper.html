@@ -112,7 +112,7 @@
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><div
                         class="ant-select ant-select-enabled"
                         id="BesType">
-                <select id="newspaperType" name="newspaperType" style="border :1px solid #d9d9d9">
+                <select id="newspaperType" name="newspaperType" style="border :1px solid #d9d9d9; border: 0;height: 36px;padding: 4px 11px;">
         <option value="0">个人或生产经营单位客户新装</option>
         <option value="1">新建住宅小区新装</option>
         <option value="2">一户一表改建</option>
@@ -134,7 +134,7 @@
                         class="ant-select ant-select-enabled"
                         id="WaterUse"></div></span>
                 </div>
-                <select id="typeOfWater" name="typeOfWater" style="border :1px solid #d9d9d9">
+                <select id="typeOfWater" name="typeOfWater" style="border :1px solid #d9d9d9; border: 0;height: 36px;padding: 4px 11px;">
                   <option value="1">居民</option>
                   <option value="0">非居民</option>
                 </select>
@@ -176,19 +176,24 @@
                 </svg></i></button></span></div>
                 <div class="ant-upload-list ant-upload-list-text"></div></span><div>所需文件:
                   <a th:href="@{/other/bz/applicationForInstallation.xls}" target="" download="报装申请表模板">报装申请表模板下载</a><br/>
-          <a th:href="@{/other/bz/engineeringDataConfessionRecord.xls}" target="" download="工程资料交底记录">工程资料交底记录</a><br/>
-          <a th:href="@{/other/bz/waterSupplyApplication.xls}" target="" download="供水报表">供水报表</a><br/>
-          <a th:href="@{/other/bz/communityBuildingInformationDisclosureRecord.xls}" target="" download="小区楼房信息交底记录">小区楼房信息交底记录</a>
+                  <a th:href="@{/other/bz/engineeringDataConfessionRecord.xls}" target="" download="工程资料交底记录">工程资料交底记录</a><br/>
+                  <a th:href="@{/other/bz/waterSupplyApplication.xls}" target="" download="供水报表">供水报表</a><br/>
+                  <a th:href="@{/other/bz/communityBuildingInformationDisclosureRecord.xls}" target="" download="小区楼房信息交底记录">小区楼房信息交底记录</a>
                   <button type="button" style="display:none" class="layui-btn pear-btn-success pear-reply" id="material">
-                    <i class="layui-icon" style="display:none">&#xe67c;</i>上传
-                  </button>
+                  <i class="layui-icon" style="display:none">&#xe67c;</i>上传
+                </button>
                   <input type="hidden" name="material" id="materialUrl" value="">
+                  <ul class="materialUl">
+
+                  </ul>
                 </div></div></span>
                 </div>
               </div>
             </div>
           </div>
           <input type="hidden" name="verification" th:value="${verification}">
+
+
           <div class="applyform-unit">
             <div class="ant-row ant-form-item form-exception2">
               <div class="ant-col-6 ant-form-item-label"><label class="" for="remark" title="备&nbsp;&nbsp;&nbsp;注">备&nbsp;&nbsp;&nbsp;注</label>
@@ -234,12 +239,11 @@
             1.可通过微信公众号“高密市孚日自来水”中的“用水服务一自来水报装一报装”模块填写申请用水信息，也可到高密市孚日水务有限公司客户服务中心办理。</p>
           <p class="p">2.新建住宅小区用户资料上传后，需将小区总平面图、给水设计图发送至gmfrsw@163.com，邮件标题请注明工程名称。</p>
           <p class="p">3.申请提报后可通过微信公众号“高密市孚日自来水”查询报装进度.</p>
-          <p>4.工程预算详情可到水业公司服务大厅获取。</p>
+          <p>4.工程预算详情可发到客户预留电子信箱，也可到高密市孚日水务有限公司客户服务中心获取。</p>
           <p class="MsoNormal">5.工程款汇入账号：</p>
           <p class="MsoNormal">名称:高密市孚日水务有限公司</p>
           <p class="MsoNormal">税号:913707857489619874</p>
-          <p class="MsoNormal">地址:高密市夏庄镇孚园后街一号</p>
-          <p class="MsoNormal">电 话：0536-2891562</p>
+          <p class="MsoNormal">地址电 话:高密市夏庄镇孚园后街一号  0536-2891562</p>
           <p class="MsoNormal">开户行、账号:农行高密支行  15453001040007536</p>
           <p class="MsoNormal">也可到高密市孚日水务有限公司办理缴费业务。</p>
           <p>6.用户缴费节点若用户在2个月内没有进行缴费则该报装申请自动结束，结束后如想继续报装可重新提交报装申请</p>
@@ -395,6 +399,14 @@
                     } else {
                         $("#materialUrl").val(res.data)
                     }
+                    let val = $("#materialUrl").val();
+                    let imgBox = '';
+                    let imGs = val.split("??");
+                    for(let i = 0;i<imGs.length;i++){
+                        let imgTxt = imGs[i].split("/")
+                        imgBox = imgBox + '<li style="list-style: none;">' + imgTxt[imgTxt.length - 1] + '</li>'
+                    }
+                    $(".materialUl").html(imgBox);
                 }
                 layer.msg(res.message);
             }

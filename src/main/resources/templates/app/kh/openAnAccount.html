@@ -143,6 +143,9 @@
                   <button type="button" style="display:none" class="layui-btn pear-btn-success pear-reply" id="material">
                     <i class="layui-icon" style="display:none">&#xe67c;</i>上传
                   </button>
+                  <ul class="materialUls">
+
+                  </ul>
             <input type="hidden" name="materialOne" id="materialUrl" value="">
                 </div></div></span>
                   <div
@@ -324,10 +327,20 @@
                 if (res.result == 0) {
                     let url = $("#materialUrl").val();
                     if(url != ''){
-                        $("#materialUrl").val(url + '?' + res.data)
+                        $("#materialUrl").val(url + '??' + res.data)
                     } else {
                         $("#materialUrl").val(res.data)
                     }
+                    let val = $("#materialUrl").val();
+                    let imgBox = '';
+                    let imGs = val.split("??");
+                    for(let i = 0;i < imGs.length;i++){
+                        let imgTxt = imGs[i].split("/")
+                        console.log(imgBox)
+                        console.log(imgBox + '<li style="list-style: none;">' + imgTxt[imgTxt.length - 1] + '</li>')
+                        imgBox = imgBox + '<li style="list-style: none;">' + imgTxt[imgTxt.length - 1] + '</li>'
+                    }
+                    $(".materialUls").html(imgBox);
                 }
                 layer.msg(res.message);
             }

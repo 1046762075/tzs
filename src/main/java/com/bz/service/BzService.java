@@ -48,4 +48,8 @@ public class BzService {
 	public int updateStatus(NewspaperDto newspaperDto) {
 		return newspaperDao.updateStatus(newspaperDto);
 	}
+
+	public NewspaperEntity getBzById(Integer id) {
+		return newspaperDao.getBzById(id);
+	}
 }

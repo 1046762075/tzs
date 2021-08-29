@@ -1,22 +1,28 @@
 package com.bz.controller;
 
 import com.bz.dto.CustomerDto;
+import com.bz.dto.MaterialDto;
 import com.bz.dto.NewspaperDto;
 import com.bz.entity.CustomerEntity;
 import com.bz.entity.NewspaperEntity;
 import com.bz.result.Result;
+import com.bz.security.utils.FileUtils;
 import com.bz.security.utils.PageTableRequest;
 import com.bz.service.BzService;
 import com.bz.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * <p>Title: CheckController</p>
@@ -25,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/pc/verify")
-public class CheckController extends BaseController{
+public class CheckController extends FileUtils {
 
 	@Autowired
 	BzService bzService;
@@ -52,6 +58,28 @@ public class CheckController extends BaseController{
 		return bzService.findList(pageTableRequest.getOffset(), pageTableRequest.getLimit(), newspaperDto);
 	}
 
+	@GetMapping("/newspaper/desc")
+	public String newspaperDesc(@RequestParam("id") Integer id, Model model){
+		NewspaperEntity newspaper = bzService.getBzById(id);
+		model.addAttribute("newspaper", newspaper);
+		ArrayList<MaterialDto> materials = new ArrayList<>();
+		for (String m : newspaper.getMaterial().split("\\?\\?")) {
+			MaterialDto materialDto = new MaterialDto();
+
+			if(m.startsWith("http") || m.startsWith("https")){
+				Random random = new Random();
+				materialDto.setName("node" + random.nextInt(100));
+				materialDto.setAddress(m);
+			}else {
+				materialDto.setAddress(super.projectName + m);
+				materialDto.setName(m.split(super.filePath)[1]);
+			}
+			materials.add(materialDto);
+		}
+		model.addAttribute("materials", materials);
+		return "/system/bz/show";
+	}
+
 	@ResponseBody
 	@PostMapping("/newspaper/updateStatus")
 	public Result updateStatus(@RequestBody NewspaperDto newspaperDto){
@@ -65,6 +93,39 @@ public class CheckController extends BaseController{
 			projectUrl = request.getRequestURL().toString().split(request.getContextPath())[0] + request.getContextPath();
 		}
 		return "system/kh/index";
+	}
+
+	@GetMapping("/openAnAccount/desc")
+	public String openAnAccountDesc(@RequestParam("id") Integer id, Model model){
+		CustomerEntity customer = customerService.getBzById(id);
+		ArrayList<MaterialDto> materials = new ArrayList<>();
+		// 三张图
+		if(customer.getMaterialOne() != null){
+			addImg(customer.getMaterialOne(), materials);
+		}
+		if(customer.getMaterialTwo() != null){
+			addImg(customer.getMaterialTwo(), materials);
+		}
+		if(customer.getMaterialThree() != null){
+			addImg(customer.getMaterialThree(), materials);
+		}
+		model.addAttribute("materials", materials);
+		model.addAttribute("customer", customer);
+		return "/system/kh/show";
+	}
+
+	private void addImg(String img, ArrayList<MaterialDto> materials) {
+		MaterialDto materialDto = new MaterialDto();
+		if(img.startsWith("http") || img.startsWith("https")){
+			Random random = new Random();
+			materialDto.setName("node" + random.nextInt(100));
+			materialDto.setAddress(img);
+		}else {
+			materialDto.setName(img.split(super.filePath)[1]);
+			materialDto.setAddress(super.projectName + img);
+		}
+
+		materials.add(materialDto);
 	}
 
 	@ResponseBody

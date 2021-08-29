@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>详细信息</title>
+  <header th:replace="header::html"></header>
+</head>
+<body>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+  <ul class="layui-tab-title">
+    <li class="layui-this">报装详情</li>
+  </ul>
+  <div class="layui-tab-content" style="height: 100px;">
+    <div class="layui-tab-item layui-show">
+      <div class="layui-card-body" style="padding: 0px;">
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">工程名称：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.projectName}"></div>
+          </div>
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">联系人：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.contactPerson}"></div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">联系电话：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.contactNumber}"></div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">联系地址：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.detailedAddress}"></div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">申请单位：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.applicant}"></div>
+          </div>
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">报装类型：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.newspaperType} == 0"><a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>个人或生产经营单位客户新装</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.newspaperType} == 1"><a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>新建住宅小区新装</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.newspaperType} == 2"><a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs"><i class="layui-icon"></i>一户一表改造</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.newspaperType} == 3"><a class="pear-btn pear-btn-warming pear-btn-sm"><i class="layui-icon"></i>水表迁移工程</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.newspaperType} == 4"><a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>临时水安装工程</a></div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">用水类型：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.typeOfWater} == 1"><a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>居民</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.typeOfWater} == 0"><a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>非居民</a></div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">用水户数：</label>
+            <div class="layui-form-mid layui-word-aux">[[${newspaper.numberOfWaterUsers}]]</div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">估计水量：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.estimatedAmountOfWater}"></div>
+          </div>
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">备注：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.remark}"></div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">资料：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${materials != null}" th:each="m,index:${materials}">
+              <label>[[${m.name}]]</label>
+              <a class="layui-btn pear-btn pear-btn-success pear-reply" th:href="${m.address}" th:download="${m.name}">下载</a>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">状态：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.status} == '0'"><a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>已提交</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.status} == '1'"><a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>受理中</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.status} == '2'"><a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs"><i class="layui-icon"></i>已完结</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${newspaper.status} == '3'"><a class="layui-btn layui-btn-normal layui-btn-disabled layui-btn-xs"><i class="layui-icon"></i>已退回</a></div>
+          </div>
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label">申请编码：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${newspaper.applicationCoding}"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

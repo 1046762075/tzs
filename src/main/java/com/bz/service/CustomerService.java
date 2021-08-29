@@ -40,4 +40,8 @@ public class CustomerService {
 	public int updateStatus(CustomerDto customerDto) {
 		return customerDao.updateStatus(customerDto);
 	}
+
+	public CustomerEntity getBzById(Integer id) {
+		return customerDao.getBzById(id);
+	}
 }

@@ -53,15 +53,15 @@
 </div>
 
 <script type="text/html" id="Newspaper-bar">
+  <button id="fileDownload" class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply" style="font-size: 12px !important;" value="{{d.material}}" lay-event="download">下载</button>
+  <button class="layui-btn pear-btn-warming  pear-btn-xs" style="font-size: 12px !important;" value="{{d.id}}" lay-event="desc">详情</button>
   {{#  if(d.status == 0){ }}
-  <button id="fileDownload" class="layui-btn layui-btn layui-btn-xs" style="font-size: 12px !important;" value="{{d.material}}" lay-event="accept">下载</button>
+  <a class="layui-btn layui-btn layui-btn-xs" lay-event="accept">审核</a>
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
   {{# }  else if(d.status == 1){ }}
   <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply" lay-event="finish">完成</a>
   {{# }  else if(d.status == 2){ }}
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
-  {{#  } else if(d.status == 3){ }}
-  <button id="fileDownload" class="layui-btn layui-btn layui-btn-xs" style="font-size: 12px !important;" value="{{d.material}}" lay-event="accept">下载</button>
   {{#  } }}
 </script>
 
@@ -144,7 +144,7 @@
                 {title: '状态', templet: '#newspaperStatus', align:'center', width:85},
                 {title: '用水户数', field: 'numberOfWaterUsers', align:'center', width:97, sort: true},
                 {title: '估计水量', field: 'estimatedAmountOfWater', align:'center', width:98, sort: true},
-                {title: '操作', toolbar: '#Newspaper-bar', align:'center', width:180},
+                {title: '操作', toolbar: '#Newspaper-bar', align:'center', width:221},
                 {title: '时   间', templet: '#applicationTime', align:'center', width:109},
                 {title: '编   码', field: 'applicationCoding', align:'center', width:109},
                 {title: '备   注', field: 'remark', align:'center', width:109}
@@ -167,6 +167,10 @@
         table.on('tool(Newspaper-table)', function(obj) {
             if (obj.event === 'accept') {
                 window.accept(obj);
+            } else if (obj.event === 'download') {
+                window.download(obj);
+            } else if (obj.event === 'desc') {
+                window.desc(obj);
             } else if (obj.event === 'finish') {
                 window.finish(obj);
             } else if (obj.event === 'return') {
@@ -228,7 +232,18 @@
             })
         }
 
-        window.accept = function(obj){
+        window.desc = function(obj){
+            layer.open({
+                type: 2,
+                title: '详细信息',
+                shade: 0.1,
+                maxmin: true,
+                area: ['850px', '560px'],
+                content: projectName + '/pc/verify/newspaper/desc?id=' + obj.data['id']
+            });
+        }
+
+        window.download = function(obj){
             let hrefs = ($('#fileDownload').val() + "").split("??");
             for(let i = 0; i < hrefs.length; i++){
                 if(hrefs[i].startsWith("http") || hrefs[i].startsWith("https")){
@@ -237,6 +252,9 @@
                     window.open($("#projectUrl").val() + hrefs[i]);
                 }
             }
+        }
+
+        window.accept = function(obj){
             let loading = layer.load();
             updateStatus(obj,1)
             layer.close(loading);

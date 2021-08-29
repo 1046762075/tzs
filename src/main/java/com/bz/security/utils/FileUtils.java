@@ -19,10 +19,10 @@ import java.util.Random;
 public class FileUtils extends BaseController {
 
 	@Value("${upload.address}")
-	String filePath;
+	public String filePath;
 
 	@Value("${upload.domain}")
-	String domain;
+	public String domain;
 
 	public String path;
 	{

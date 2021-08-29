@@ -24,4 +24,6 @@ public interface NewspaperDao {
 	List<NewspaperEntity> getFuzzyNewspaperByPage(NewspaperDto newspaperDto);
 
 	int updateStatus(NewspaperDto newspaperDto);
+
+	NewspaperEntity getBzById(@Param("id") Integer id);
 }

@@ -155,7 +155,7 @@ public class RepairController extends FileUtils {
 	@PostMapping("/openAnAccount/submit")
 	public Object openAnAccountSubmit(CustomerEntity customer){
 		try {
-			String[] materials = customer.getMaterialOne().split("\\?");
+			String[] materials = customer.getMaterialOne().split("\\?\\?");
 			if(materials.length < 2){
 				return new ResultResponse(ResultUtil.RESULT_ERROR, "请至少上传两种资料");
 			}
