@@ -60,7 +60,7 @@
 <body>
 <form method="get" id="myForm">
   <div class="sub_z">
-    <input type="text" placeholder="请输入账号" class="account" id="verification">
+    <input type="text" placeholder="请输入手机号码" class="account" id="verification">
 <!--    <input type="text" placeholder="请输入密码" class="account">-->
     <input type="submit" value="进入" class="submit account" id="loginId">
   </div>
@@ -80,7 +80,7 @@
         document.forms.myForm.action = url + '/bx/index/' + $("#verification").val();
         $("input[type='text']").each(function(i,item){
             if(item.value == ""){
-                layer.msg("请输入账号")
+                layer.msg("请输入手机号码")
                 flag = false;
             }
         });
