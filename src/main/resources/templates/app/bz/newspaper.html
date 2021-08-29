@@ -1,8 +1,8 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<meta charset="utf-8">
-<meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
-<meta content="#000000" name="theme-color">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport"/>
+<meta content="#000000" name="theme-color"/>
 <link th:href="@{/other/manifest.json}" rel="manifest">
 <link th:href="@{/favicon.ico}" rel="shortcut icon">
 <title>报装-网上报装管理系统</title>
@@ -175,6 +175,10 @@
                         class="ant-upload ant-upload-select ant-upload-select-text"><span class="ant-upload" role="button" tabindex="0">
                 </svg></i></button></span></div>
                 <div class="ant-upload-list ant-upload-list-text"></div></span><div>所需文件:
+                  <a th:href="@{/other/bz/applicationForInstallation.xls}" target="" download="报装申请表模板">报装申请表模板下载</a><br/>
+          <a th:href="@{/other/bz/engineeringDataConfessionRecord.xls}" target="" download="工程资料交底记录">工程资料交底记录</a><br/>
+          <a th:href="@{/other/bz/waterSupplyApplication.xls}" target="" download="供水报表">供水报表</a><br/>
+          <a th:href="@{/other/bz/communityBuildingInformationDisclosureRecord.xls}" target="" download="小区楼房信息交底记录">小区楼房信息交底记录</a>
                   <button type="button" style="display:none" class="layui-btn pear-btn-success pear-reply" id="material">
                     <i class="layui-icon" style="display:none">&#xe67c;</i>上传
                   </button>
@@ -239,11 +243,11 @@
           <p class="MsoNormal">开户行、账号:农行高密支行  15453001040007536</p>
           <p class="MsoNormal">也可到高密市孚日水务有限公司办理缴费业务。</p>
           <p>6.用户缴费节点若用户在2个月内没有进行缴费则该报装申请自动结束，结束后如想继续报装可重新提交报装申请</p>
-          <p></p>
-          <p><a th:href="@{/other/bz/applicationForInstallation.xls}" target="" download="报装申请表模板">报装申请表模板下载</a></p>
-          <p><a th:href="@{/other/bz/engineeringDataConfessionRecord.xls}" target="" download="工程资料交底记录">工程资料交底记录</a></p>
-          <p><a th:href="@{/other/bz/waterSupplyApplication.xls}" target="" download="供水报表">供水报表</a></p>
-          <p><a th:href="@{/other/bz/communityBuildingInformationDisclosureRecord.xls}" target="" download="小区楼房信息交底记录">小区楼房信息交底记录</a></p>
+<!--          <p></p>-->
+<!--          <p><a th:href="@{/other/bz/applicationForInstallation.xls}" target="" download="报装申请表模板">报装申请表模板下载</a></p>-->
+<!--          <p><a th:href="@{/other/bz/engineeringDataConfessionRecord.xls}" target="" download="工程资料交底记录">工程资料交底记录</a></p>-->
+<!--          <p><a th:href="@{/other/bz/waterSupplyApplication.xls}" target="" download="供水报表">供水报表</a></p>-->
+<!--          <p><a th:href="@{/other/bz/communityBuildingInformationDisclosureRecord.xls}" target="" download="小区楼房信息交底记录">小区楼房信息交底记录</a></p>-->
           <p></p>
           <p></p>
           <p class="p"></p><h4><strong><span style="color:#333333">五、联系方式</span></strong></h4>

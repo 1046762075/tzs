@@ -1,10 +1,13 @@
 adminHost: 127.0.0.1
 server:
   port: 8088
+#  1.7
+#  servlet-path: /tzs
+#  1.8
   servlet:
     context-path: /tzs
-    session:
-      timeout: 1800
+  session:
+    timeout: 1800
   tomcat:
     uri-encoding: UTF-8
 
@@ -36,8 +39,7 @@ mybatis:
 upload:
   # 配置服务器域名
   domain:
-  # 将上传的文件放至 nginx 转发的路径
-  address: C:\Java\Spring\upload\
+  address: /other/upload/
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头

@@ -1,7 +1,5 @@
 package com.bz.security.utils;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.bz.dto.DeptDto;
 import com.bz.dto.MenuDto;
 import com.bz.dto.MenuIndexDto;
@@ -9,7 +7,6 @@ import com.bz.dto.MenuIndexDto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class TreeUtil {
     //todo 判断list是否为空
@@ -21,11 +18,14 @@ public class TreeUtil {
      * @return
      */
     public static List<MenuDto> menutree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos ){
-        // if (listByRoleId == null & listByRoleId.size() ==0){
-        //     throw
-        // }
-        List<Integer> collect = listByRoleId.stream().map(MenuDto::getId).collect(Collectors.toList());
-        List<Integer> collect1 = menuDtos.stream().map(MenuDto::getId).collect(Collectors.toList());
+		List<Integer> collect = new ArrayList<>();
+		List<Integer> collect1 = new ArrayList<>();
+		for (MenuDto menuDto : listByRoleId) {
+			collect.add(menuDto.getId());
+		}
+		for (MenuDto menuDto : menuDtos) {
+			collect1.add(menuDto.getId());
+		}
         // 遍历list2
         for (Integer item : collect) {
             // 如果存在这个数
@@ -41,11 +41,14 @@ public class TreeUtil {
     }
 
     public static List<DeptDto> deptTree(List<DeptDto> listById, List<DeptDto> lists ){
-        // if (listByRoleId == null & listByRoleId.size() ==0){
-        //     throw
-        // }
-        List<Integer> collect = listById.stream().map(DeptDto::getId).collect(Collectors.toList());
-        List<Integer> collect1 = lists.stream().map(DeptDto::getId).collect(Collectors.toList());
+		List<Integer> collect = new ArrayList<>();
+		List<Integer> collect1 = new ArrayList<>();
+		for (DeptDto deptDto : listById) {
+			collect.add(deptDto.getId());
+		}
+		for (DeptDto deptDto : lists) {
+			collect1.add(deptDto.getId());
+		}
         // 遍历list2
         for (Integer item : collect) {
             // 如果存在这个数
@@ -58,21 +61,6 @@ public class TreeUtil {
             }
         }
         return lists;
-    }
-
-    public static void setMenuTree(Integer parentId, List<MenuIndexDto> menusAll, JSONArray array) {
-        for (MenuIndexDto per : menusAll) {
-            if (per.getParentId().equals(parentId)) {
-                String string = JSONObject.toJSONString(per);
-                JSONObject parent = (JSONObject) JSONObject.parse(string);
-                array.add(parent);
-                if (menusAll.stream().filter(p -> p.getParentId().equals(per.getId())).findAny() != null) {
-                    JSONArray child = new JSONArray();
-                    parent.put("child", child);
-                    setMenuTree(per.getId(), menusAll, child);
-                }
-            }
-        }
     }
 
     public static List<MenuIndexDto> parseMenuTree(List<MenuIndexDto> list){

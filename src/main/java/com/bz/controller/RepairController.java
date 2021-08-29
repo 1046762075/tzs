@@ -4,10 +4,10 @@ import com.bz.entity.CustomerEntity;
 import com.bz.entity.NewspaperEntity;
 import com.bz.result.ResultResponse;
 import com.bz.result.ResultUtil;
+import com.bz.security.utils.FileUtils;
 import com.bz.service.BzService;
 import com.bz.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  * <p>Title: RepairController</p>
@@ -33,19 +30,13 @@ import java.util.stream.Collectors;
  */
 @Controller
 @RequestMapping("/bx")
-public class RepairController extends BaseController{
+public class RepairController extends FileUtils {
 
 	@Autowired
 	BzService bxService;
 
 	@Autowired
 	CustomerService customerService;
-
-	@Value("${upload.address}")
-	String filePath;
-
-	@Value("${upload.domain}")
-	String domain;
 
 	@GetMapping("/login")
 	public String login(Model model){
@@ -74,9 +65,17 @@ public class RepairController extends BaseController{
 			return "app/login";
 		}
 		List<NewspaperEntity> entities = this.bxService.findInstallationRecord(verification);
-		List<NewspaperEntity> finish = entities.stream().filter(n -> n.getStatus().equals(NewspaperEntity.finish)).collect(Collectors.toList());
-		entities = entities.stream().filter(n -> !n.getStatus().equals(NewspaperEntity.finish)).collect(Collectors.toList());
-		model.addAttribute("newspapers", entities);
+		// jdk1.7
+		List<NewspaperEntity> finish = new ArrayList<>();
+		List<NewspaperEntity> undone = new ArrayList<>();
+		for (NewspaperEntity entity : entities) {
+			if(entity.getStatus().equals(NewspaperEntity.finish)){
+				finish.add(entity);
+			}else {
+				undone.add(entity);
+			}
+		}
+		model.addAttribute("newspapers", undone);
 		model.addAttribute("finish", finish);
 		model.addAttribute("projectName", projectName);
 		model.addAttribute("verification", verification);
@@ -93,23 +92,6 @@ public class RepairController extends BaseController{
 		String name = updateFile(file);
 		if (name != null) return new ResultResponse(ResultUtil.RESULT_SUCCESS, "上传成功", name);
 		return new ResultResponse(ResultUtil.RESULT_ERROR,"上传失败");
-	}
-
-	private String updateFile(@RequestParam("file") MultipartFile file) {
-		Random random = new Random();
-		String fileName = file.getOriginalFilename();
-		String date = new SimpleDateFormat("yyMMdd").format(new Date()) + random.nextInt(1000);
-		File dest = new File(filePath + date + fileName);
-		if (!dest.getParentFile().exists()) {
-			dest.getParentFile().mkdirs();
-		}
-		try {
-			file.transferTo(dest);
-			return domain + filePath + date + fileName;
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
 	}
 
 	@ResponseBody
@@ -152,9 +134,17 @@ public class RepairController extends BaseController{
 			return "app/login";
 		}
 		List<CustomerEntity> entities = this.customerService.findOpenAnAccount(verification);
-		List<CustomerEntity> finish = entities.stream().filter(n -> n.getStatus().equals(CustomerEntity.finish)).collect(Collectors.toList());
-		entities = entities.stream().filter(n -> !n.getStatus().equals(CustomerEntity.finish)).collect(Collectors.toList());
-		model.addAttribute("customers", entities);
+		// jdk1.7
+		List<CustomerEntity> finish = new ArrayList<>();
+		List<CustomerEntity> undone = new ArrayList<>();
+		for (CustomerEntity entity : entities) {
+			if(entity.getStatus().equals(CustomerEntity.finish)){
+				finish.add(entity);
+			}else {
+				undone.add(entity);
+			}
+		}
+		model.addAttribute("customers", undone);
 		model.addAttribute("finish", finish);
 		model.addAttribute("projectName", projectName);
 		model.addAttribute("verification", verification);
@@ -202,9 +192,17 @@ public class RepairController extends BaseController{
 			return "app/login";
 		}
 		List<NewspaperEntity> entities = this.bxService.findInstallationRecord(verification);
-		List<NewspaperEntity> finish = entities.stream().filter(n -> n.getStatus().equals(NewspaperEntity.finish)).collect(Collectors.toList());
-		entities = entities.stream().filter(n -> !n.getStatus().equals(NewspaperEntity.finish)).collect(Collectors.toList());
-		model.addAttribute("newspapers", entities);
+		// jdk1.7
+		List<NewspaperEntity> finish = new ArrayList<>();
+		List<NewspaperEntity> undone = new ArrayList<>();
+		for (NewspaperEntity entity : entities) {
+			if(entity.getStatus().equals(NewspaperEntity.finish)){
+				finish.add(entity);
+			}else {
+				undone.add(entity);
+			}
+		}
+		model.addAttribute("newspapers", undone);
 		model.addAttribute("finish", finish);
 		model.addAttribute("projectName", projectName);
 		model.addAttribute("verification", verification);

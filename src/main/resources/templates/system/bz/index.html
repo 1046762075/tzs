@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"/>
   <title>报装列表</title>
   <header th:replace="header::html"></header>
 </head>
@@ -22,6 +22,7 @@
         <div class="layui-input-inline" style="width:110px;">
           <input type="text" name="end_date" class="layui-input" placeholder="结束时间" id="date_c2">
         </div>
+        <input type="hidden" name="projectUrl" id="projectUrl">
 
         <div class="layui-input-inline" style="width:110px;">
           <select name="status" id="status"></select>
@@ -109,6 +110,7 @@
         let table = layui.table;
         let form = layui.form;
         let $ = layui.jquery;
+        $("#projectUrl").val('[[${projectUrl}]]')
         let laydate = layui.laydate;
         laydate.render({
             elem: '#date_c1',
@@ -203,7 +205,7 @@
                     "contactPerson": name,
                     "contactNumber": phone,
                 }
-                , url: projectName + '/pc/verify/newspaper/findList'
+                , url: projectName + '/pc/verify/newspaper/findList?v=' + new Date().getTime()
                 , method: 'post'
             });
             return false;
@@ -224,17 +226,21 @@
                     }
                 }
             })
-            table.reload('Newspaper-table');
         }
 
         window.accept = function(obj){
             let hrefs = ($('#fileDownload').val() + "").split("??");
             for(let i = 0; i < hrefs.length; i++){
-                window.open(hrefs[i]);
+                if(hrefs[i].startsWith("http") || hrefs[i].startsWith("https")){
+                    window.open(hrefs[i]);
+                }else {
+                    window.open($("#projectUrl").val() + hrefs[i]);
+                }
             }
             let loading = layer.load();
             updateStatus(obj,1)
             layer.close(loading);
+            window.refresh(obj);
         }
 
         window.finish = function(obj){
@@ -243,6 +249,7 @@
                 let loading = layer.load();
                 updateStatus(obj,2)
                 layer.close(loading);
+                window.refresh(obj);
             });
         }
 
@@ -252,6 +259,7 @@
                 let loading = layer.load();
                 updateStatus(obj,3)
                 layer.close(loading);
+                window.refresh(obj);
             });
         }
 

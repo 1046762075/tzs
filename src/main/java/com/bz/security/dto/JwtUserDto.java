@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 public class JwtUserDto implements UserDetails {
@@ -25,9 +24,9 @@ public class JwtUserDto implements UserDetails {
     @JsonIgnore
     private List<GrantedAuthority> authorities;
 
-    public List<String> getRoles() {
-        return authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
-    }
+//    public List<String> getRoles() {
+//        return authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+//    }
 
 
     /**

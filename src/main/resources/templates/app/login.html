@@ -1,7 +1,12 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0, user-scalable=no" name="viewport"/>
+  <meta content="yes" name=" apple-mobile-web-app-capable"/>
+  <meta content="no" name="apple-touch-fullscreen"/>
+  <meta content="black" name=" apple-mobile-web-app-status-bar-style"/>
+  <meta content="telephone=no" name="format-detection"/>
   <script th:src="@{/component/layui/layui.all.js}"></script>
   <title>登录</title>
   <style>
@@ -43,6 +48,12 @@
       text-align:center;
       line-height:38px;
       border-radius:5px;
+    }
+    #myForm {
+      /*position: absolute;*/
+      left: 50%;
+      top: 50%;
+      transform: translate(0%, 160%);
     }
   </style>
 </head>

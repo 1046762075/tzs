@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>Title: CheckController</p>
  * Description：审核中心
@@ -31,9 +33,15 @@ public class CheckController extends BaseController{
 	@Autowired
 	CustomerService customerService;
 
+	private String projectUrl;
+
 	@RequestMapping("/newspaper/index")
-	public String newspaperIndex(Model model){
+	public String newspaperIndex(Model model, HttpServletRequest request){
 		model.addAttribute("projectName", projectName);
+		if(projectUrl == null){
+			projectUrl = request.getRequestURL().toString().split(request.getContextPath())[0] + request.getContextPath();
+		}
+		model.addAttribute("projectUrl", projectUrl);
 		return "system/bz/index";
 	}
 
@@ -51,8 +59,11 @@ public class CheckController extends BaseController{
 	}
 
 	@RequestMapping("/openAnAccount/index")
-	public String openAnAccountIndex(Model model){
+	public String openAnAccountIndex(Model model, HttpServletRequest request){
 		model.addAttribute("projectName", projectName);
+		if(projectUrl == null){
+			projectUrl = request.getRequestURL().toString().split(request.getContextPath())[0] + request.getContextPath();
+		}
 		return "system/kh/index";
 	}
 

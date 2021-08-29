@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class BaseController {
 
 	@Value("${server.servlet.context-path}")
-	String projectName;
+	public String projectName;
 
     protected final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
