@@ -109,6 +109,12 @@ public class CheckController extends FileUtils {
 		if(customer.getMaterialThree() != null){
 			addImg(customer.getMaterialThree(), materials);
 		}
+		if(customer.getMaterialFour() != null){
+			addImg(customer.getMaterialFour(), materials);
+		}
+		if(customer.getMaterialFive() != null){
+			addImg(customer.getMaterialFive(), materials);
+		}
 		model.addAttribute("materials", materials);
 		model.addAttribute("customer", customer);
 		return "/system/kh/show";

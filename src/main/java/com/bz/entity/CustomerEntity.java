@@ -67,6 +67,15 @@ public class CustomerEntity implements Serializable {
 	private String materialThree;
 
 	/**
+	 * 材料四
+	 */
+	private String materialFour;
+	/**
+	 * 材料五
+	 */
+	private String materialFive;
+
+	/**
 	 * 状态 0 已提交 1 审核中 2 已完成  3 已驳回
 	 */
 	private String status;
@@ -191,5 +200,21 @@ public class CustomerEntity implements Serializable {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getMaterialFour() {
+		return materialFour;
+	}
+
+	public void setMaterialFour(String materialFour) {
+		this.materialFour = materialFour;
+	}
+
+	public String getMaterialFive() {
+		return materialFive;
+	}
+
+	public void setMaterialFive(String materialFive) {
+		this.materialFive = materialFive;
 	}
 }

@@ -164,6 +164,12 @@ public class RepairController extends FileUtils {
 			customer.setVerification((String) getSession().getAttribute("verification"));
 			if(materials.length > 2){
 				customer.setMaterialThree(materials[2]);
+				if(materials.length > 3){
+					customer.setMaterialFour(materials[3]);
+					if(materials.length > 4){
+						customer.setMaterialFive(materials[4]);
+					}
+				}
 			}
 			customer.setCreateTime(new Date());
 			if(this.customerService.submit(customer) == 1){
