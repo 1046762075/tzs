@@ -76,6 +76,11 @@ public class CustomerEntity implements Serializable {
 	private String materialFive;
 
 	/**
+	 * 材料六
+	 */
+	private String materialSex;
+
+	/**
 	 * 状态 0 已提交 1 审核中 2 已完成  3 已驳回
 	 */
 	private String status;
@@ -216,5 +221,13 @@ public class CustomerEntity implements Serializable {
 
 	public void setMaterialFive(String materialFive) {
 		this.materialFive = materialFive;
+	}
+
+	public String getMaterialSex() {
+		return materialSex;
+	}
+
+	public void setMaterialSex(String materialSex) {
+		this.materialSex = materialSex;
 	}
 }

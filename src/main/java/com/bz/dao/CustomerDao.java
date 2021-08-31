@@ -25,4 +25,8 @@ public interface CustomerDao {
 	int updateStatus(CustomerDto customerDto);
 
 	CustomerEntity getBzById(@Param("id") Integer id);
+
+	Integer getCustomerByVerification(@Param("verification") String verification);
+
+	int updateCustomerById(CustomerEntity customer);
 }

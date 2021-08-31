@@ -18,6 +18,7 @@
         <result property="materialThree" column="material_three"/>
         <result property="materialFour" column="material_four"/>
         <result property="materialFive" column="material_five"/>
+        <result property="materialSex" column="material_sex"/>
         <result property="status" column="status"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
@@ -25,22 +26,58 @@
         INSERT my_customer(name, address, handler,
         mobile_telephone, fixed_telephone, id_card,
         tax_number, verification, application_coding,
-        material_one, material_two, material_three, material_four, material_five, status, create_time)
+        material_one, material_two, material_three, material_four, material_five, material_sex, status, create_time)
         values(#{name},#{address},#{handler},
         #{mobileTelephone},#{fixedTelephone},#{idCard},
         #{taxNumber},#{verification},#{applicationCoding},
-        #{materialOne},#{materialTwo},#{materialThree},#{materialFour},#{materialFive},#{status},#{createTime})
+        #{materialOne},#{materialTwo},#{materialThree},#{materialFour},#{materialFive},#{materialSex},#{status},#{createTime})
     </insert>
     <update id="updateStatus">
         UPDATE my_customer set status = #{status} where id = #{id}
     </update>
+    <update id="updateCustomerById">
+        UPDATE my_customer
+        <set>
+            <if test="handler != null">
+                handler = #{handler},
+            </if>
+            <if test="mobileTelephone != null">
+                mobile_telephone = #{mobileTelephone},
+            </if>
+            <if test="verification != null">
+                verification = #{verification},
+            </if>
+            <if test="materialOne != null">
+                material_one = #{materialOne},
+            </if>
+            <if test="materialTwo != null">
+                material_two = #{materialTwo},
+            </if>
+            <if test="materialThree != null">
+                material_three = #{materialThree},
+            </if>
+            <if test="materialFour != null">
+                material_four = #{materialFour},
+            </if>
+            <if test="materialFive != null">
+                material_five = #{materialFive},
+            </if>
+            <if test="materialSex != null">
+                material_sex = #{materialSex},
+            </if>
+            <if test="name != null">
+                name = #{name}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
     <select id="findOpenAnAccount" resultType="com.bz.entity.CustomerEntity">
-        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.material_four, c.material_five, c.status, c.create_time
+        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.material_four, c.material_five, c.material_sex, c.status, c.create_time
         FROM my_customer c
         WHERE c.verification = #{verification} order by c.create_time desc
     </select>
     <select id="getFuzzyCustomerByPage" resultType="com.bz.entity.CustomerEntity">
-        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, concat_ws('??', c.material_one, c.material_two, c.material_three, c.material_four, c.material_five) as material_one, c.status, c.create_time
+        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, concat_ws('??', c.material_one, c.material_two, c.material_three, c.material_four, c.material_five, c.material_sex) as material_one, c.status, c.create_time
         FROM my_customer c
         <where>
             <if test="status != null and status != ''">
@@ -59,8 +96,11 @@
         order by c.create_time desc
     </select>
     <select id="getBzById" resultType="com.bz.entity.CustomerEntity">
-        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.material_four, c.material_five, c.status, c.create_time
+        SELECT c.id, c.name, c.address, c.handler, c.mobile_telephone, c.fixed_telephone, c.id_card, c.tax_number, c.verification, c.application_coding, c.material_one, c.material_two, c.material_three, c.material_four, c.material_five, c.material_sex, c.status, c.create_time
         FROM my_customer c
         WHERE id = #{id}
+    </select>
+    <select id="getCustomerByVerification" resultType="java.lang.Integer">
+        SELECT id FROM my_customer WHERE verification = #{verification}
     </select>
 </mapper>

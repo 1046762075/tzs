@@ -278,7 +278,7 @@
                 <div class="major">
                   <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
 
-                  <div class="wai" th:if="${newspapers != null}" th:each="n,index:${newspapers}">
+                  <div class="wai" th:if="${newspapers.size() > 0}" th:each="n,index:${newspapers}">
                     <table>
                       <tbody >
                       <tr>
@@ -486,6 +486,7 @@
                 }
             }
         })
+        $('#siteSubmit').attr("disabled", false);
         return false;
     });
 

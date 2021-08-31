@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 30/08/2021 11:13:21
+ Date: 31/08/2021 18:04:02
 */
 
 SET NAMES utf8mb4;
@@ -39,8 +39,9 @@ CREATE TABLE `my_customer`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '开户时间',
   `material_four` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料四',
   `material_five` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '材料五',
+  `material_sex` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for my_menu
@@ -58,7 +59,7 @@ CREATE TABLE `my_menu`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of my_menu
@@ -69,6 +70,7 @@ INSERT INTO `my_menu` VALUES (4, 3, '人员列表', 'layui-icon layui-icon layui
 INSERT INTO `my_menu` VALUES (5, 1, '报装列表', 'layui-icon layui-icon layui-icon layui-icon-cellphone', 'pc/verify/newspaper/index', '', 1, 1, '2021-08-23 23:15:46', '2021-05-11 18:09:54');
 INSERT INTO `my_menu` VALUES (6, 3, '菜单管理', 'layui-icon layui-icon-vercode', 'pc/menu/index', 'menu:list', 6, 1, '2021-08-23 23:15:46', '2020-07-10 09:34:53');
 INSERT INTO `my_menu` VALUES (7, 1, '开户列表', 'layui-icon layui-icon layui-icon layui-icon-cellphone', 'pc/verify/openAnAccount/index', '', 2, 1, '2021-08-23 23:15:46', '2021-05-11 18:09:54');
+INSERT INTO `my_menu` VALUES (8, 1, '过户列表', 'layui-icon layui-icon layui-icon layui-icon-cellphone', 'pc/verify/transfer/index', '', 5, 1, '2021-08-31 14:47:54', '2021-08-31 14:47:56');
 
 -- ----------------------------
 -- Table structure for my_role
@@ -109,8 +111,10 @@ INSERT INTO `my_role_menu` VALUES (1, 4);
 INSERT INTO `my_role_menu` VALUES (1, 5);
 INSERT INTO `my_role_menu` VALUES (1, 6);
 INSERT INTO `my_role_menu` VALUES (1, 7);
+INSERT INTO `my_role_menu` VALUES (1, 8);
 INSERT INTO `my_role_menu` VALUES (2, 1);
 INSERT INTO `my_role_menu` VALUES (2, 5);
+INSERT INTO `my_role_menu` VALUES (2, 8);
 
 -- ----------------------------
 -- Table structure for my_role_user
@@ -128,6 +132,26 @@ CREATE TABLE `my_role_user`  (
 INSERT INTO `my_role_user` VALUES (1, 1);
 INSERT INTO `my_role_user` VALUES (2, 2);
 INSERT INTO `my_role_user` VALUES (3, 2);
+
+-- ----------------------------
+-- Table structure for my_transfer
+-- ----------------------------
+DROP TABLE IF EXISTS `my_transfer`;
+CREATE TABLE `my_transfer`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `original_user` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `new_user` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `original_phone` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `new_phone` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `customer_id` int(11) NULL DEFAULT NULL COMMENT '0 已提交 1 审核中 2 已完成 3 已退回',
+  `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `materials` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `reason` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '0 产权变更 1 用水地点迁移 2 其它',
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `application_coding` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `verification` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for my_user
@@ -154,8 +178,8 @@ CREATE TABLE `my_user`  (
 -- Records of my_user
 -- ----------------------------
 INSERT INTO `my_user` VALUES (1, 'admin', '$2a$10$DKnVhm/T4CrJTyb.K18HeeLHEC.7uvEpwAuFOxJNUNgZUeOo0QsRy', 'admin', '18173516309', 1, '2021-08-23 09:42:03', '2021-08-25 18:19:18', NULL, '10.43.1.1', 296, '暂无地址', 0);
-INSERT INTO `my_user` VALUES (2, '周璐', '$2a$10$DKnVhm/T4CrJTyb.K18HeeLHEC.7uvEpwAuFOxJNUNgZUeOo0QsRy', '周璐', '18565852266', 1, '2021-08-22 10:42:31', '2021-08-29 18:50:37', '2021-04-25 20:31:06', '42.49.174.51', 1610, '五岭阁', 0);
-INSERT INTO `my_user` VALUES (3, '林光亮', '$2a$10$0mR8uLyas9bC8F15sH/WtuZQxq6MJjjvLgnFQEHAZHZvC.15CVjra', '林光亮', '13047223392', 1, '2021-08-22 10:44:15', '2021-08-29 18:50:46', '2021-04-25 20:43:30', '8.129.184.128', 970, '高亭司高冲村19组', 0);
+INSERT INTO `my_user` VALUES (2, '周璐', '$2a$10$DKnVhm/T4CrJTyb.K18HeeLHEC.7uvEpwAuFOxJNUNgZUeOo0QsRy', '周璐', '18565852266', 1, '2021-08-22 10:42:31', '2021-08-31 15:46:29', '2021-04-25 20:31:06', '42.49.174.51', 1610, '五岭阁', 0);
+INSERT INTO `my_user` VALUES (3, '林光亮', '$2a$10$0mR8uLyas9bC8F15sH/WtuZQxq6MJjjvLgnFQEHAZHZvC.15CVjra', '林光亮', '13047223392', 1, '2021-08-22 10:44:15', '2021-08-31 15:46:28', '2021-04-25 20:43:30', '8.129.184.128', 970, '高亭司高冲村19组', 0);
 
 -- ----------------------------
 -- Table structure for newspaper
@@ -179,6 +203,6 @@ CREATE TABLE `newspaper`  (
   `status` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '状态 0 已提交 1受理中 2已完结 3已退回',
   `application_coding` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '申请编码',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

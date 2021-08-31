@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>详细信息</title>
+  <header th:replace="header::html"></header>
+</head>
+<body>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+  <ul class="layui-tab-title">
+    <li class="layui-this">过户详情</li>
+  </ul>
+  <div class="layui-tab-content" style="height: 100px;">
+    <div class="layui-tab-item layui-show">
+      <div class="layui-card-body" style="padding: 0px;">
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label" style="width:130px;">原户主：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${transfer.originalUser}"></div>
+          </div>
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label" style="width:130px;">新户主：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${transfer.newUser}"></div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label" style="width:130px;">原户主手机：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${transfer.originalPhone}"></div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label" style="width:130px;">新户主手机：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${transfer.newPhone}"></div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label" style="width:130px;">原因：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.reason} == '0'"><a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>产权变更</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.reason} == '1'"><a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>用水地点迁移</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.reason} == '2'"><a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs"><i class="layui-icon"></i>其它</a></div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label" style="width:130px;">时间：</label>
+            <div class="layui-form-mid layui-word-aux">[[${#dates.format(transfer.createTime,'yyyy-MM-dd HH:mm:ss')}]]</div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:130px;">资料：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${materials != null}" th:each="m,index:${materials}">
+              <label>[[${m.name}]]</label>
+              <a class="layui-btn pear-btn pear-btn-success pear-reply" th:href="${m.address}" th:download="${m.name}">下载</a>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label" style="width:130px;">状态：</label>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.status} == '0'"><a class="layui-btn layui-btn-normal layui-btn-xs"><i class="layui-icon"></i>已提交</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.status} == '1'"><a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply"><i class="layui-icon"></i>审核中</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.status} == '2'"><a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs"><i class="layui-icon"></i>已完结</a></div>
+            <div class="layui-form-mid layui-word-aux" th:if="${transfer.status} == '3'"><a class="layui-btn layui-btn-normal layui-btn-disabled layui-btn-xs"><i class="layui-icon"></i>已退回</a></div>
+          </div>
+          <div class="layui-inline" style="width:400px;">
+            <label class="layui-form-label" style="width:130px;">申请编码：</label>
+            <div class="layui-form-mid layui-word-aux" th:text="${transfer.applicationCoding}"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

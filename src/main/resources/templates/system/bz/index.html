@@ -62,6 +62,8 @@
   <a class="layui-btn pear-btn pear-btn-xs pear-btn-success pear-reply" lay-event="finish">完成</a>
   {{# }  else if(d.status == 2){ }}
   <a class="layui-btn layui-btn-normal layui-btn-danger layui-btn-xs" lay-event="return">退回</a>
+  {{#  } else if(d.status == 3){ }}
+  <a class="layui-btn layui-btn layui-btn-xs" lay-event="accept">审核</a>
   {{#  } }}
 </script>
 

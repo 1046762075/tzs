@@ -3,13 +3,16 @@ package com.bz.controller;
 import com.bz.dto.CustomerDto;
 import com.bz.dto.MaterialDto;
 import com.bz.dto.NewspaperDto;
+import com.bz.dto.TransferDto;
 import com.bz.entity.CustomerEntity;
+import com.bz.entity.MyTransferEntity;
 import com.bz.entity.NewspaperEntity;
 import com.bz.result.Result;
 import com.bz.security.utils.FileUtils;
 import com.bz.security.utils.PageTableRequest;
 import com.bz.service.BzService;
 import com.bz.service.CustomerService;
+import com.bz.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +41,9 @@ public class CheckController extends FileUtils {
 
 	@Autowired
 	CustomerService customerService;
+
+	@Autowired
+	TransferService transferService;
 
 	private String projectUrl;
 
@@ -100,19 +106,19 @@ public class CheckController extends FileUtils {
 		CustomerEntity customer = customerService.getBzById(id);
 		ArrayList<MaterialDto> materials = new ArrayList<>();
 		// 三张图
-		if(customer.getMaterialOne() != null){
+		if(customer.getMaterialOne() != null && !customer.getMaterialOne().equals("")){
 			addImg(customer.getMaterialOne(), materials);
 		}
-		if(customer.getMaterialTwo() != null){
+		if(customer.getMaterialTwo() != null && !customer.getMaterialTwo().equals("")){
 			addImg(customer.getMaterialTwo(), materials);
 		}
-		if(customer.getMaterialThree() != null){
+		if(customer.getMaterialThree() != null && !customer.getMaterialThree().equals("")){
 			addImg(customer.getMaterialThree(), materials);
 		}
-		if(customer.getMaterialFour() != null){
+		if(customer.getMaterialFour() != null && !customer.getMaterialFour().equals("")){
 			addImg(customer.getMaterialFour(), materials);
 		}
-		if(customer.getMaterialFive() != null){
+		if(customer.getMaterialFive() != null && !customer.getMaterialFive().equals("")){
 			addImg(customer.getMaterialFive(), materials);
 		}
 		model.addAttribute("materials", materials);
@@ -145,5 +151,41 @@ public class CheckController extends FileUtils {
 	@PostMapping("/customer/updateStatus")
 	public Result updateStatus(@RequestBody CustomerDto customerDto){
 		return Result.judge(customerService.updateStatus(customerDto), customerDto.getStatus().equals("1")?"受理": customerDto.getStatus().equals("2")?"完成":"取消");
+	}
+
+	@RequestMapping("/transfer/index")
+	public String transferIndex(Model model, HttpServletRequest request){
+		if(projectUrl == null){
+			projectUrl = request.getRequestURL().toString().split(request.getContextPath())[0] + request.getContextPath();
+		}
+		model.addAttribute("projectName", projectName);
+		model.addAttribute("projectUrl", projectUrl);
+		return "system/gh/index";
+	}
+
+	@ResponseBody
+	@PostMapping("/transfer/findList")
+	public Result<MyTransferEntity> findTransferList(PageTableRequest pageTableRequest, TransferDto transferDto){
+		pageTableRequest.countOffset();
+		return transferService.findList(pageTableRequest.getOffset(), pageTableRequest.getLimit(), transferDto);
+	}
+
+	@ResponseBody
+	@PostMapping("/transfer/updateStatus")
+	public Result updateStatus(@RequestBody TransferDto transferDto){
+		return Result.judge(transferService.updateStatus(transferDto), transferDto.getStatus().equals("1")?"受理": transferDto.getStatus().equals("2")?"完成":"取消");
+	}
+
+	@GetMapping("/transfer/desc")
+	public String transferDesc(@RequestParam("id") Integer id, Model model){
+		MyTransferEntity transfer = transferService.getGhById(id);
+		ArrayList<MaterialDto> materials = new ArrayList<>();
+		String[] imGs = transfer.getMaterials().split("\\?\\?");
+		for (String img : imGs) {
+			addImg(img, materials);
+		}
+		model.addAttribute("materials", materials);
+		model.addAttribute("transfer", transfer);
+		return "/system/gh/show";
 	}
 }

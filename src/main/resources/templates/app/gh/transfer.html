@@ -18,10 +18,10 @@
   <div>
     <div class="top-menu">
       <li style="list-style: none;" class="application active">
-        <button class="ant-btn" type="button"><span>开户申请</span></button>
+        <button class="ant-btn" type="button"><span>过户申请</span></button>
       </li>
       <li style="list-style: none;" class="xz">
-        <button class="ant-btn" type="button"><span>开户须知</span></button>
+        <button class="ant-btn" type="button"><span>过户须知</span></button>
       </li>
       <li style="list-style: none;" class="bz">
         <button class="ant-btn" type="button"><span>查询进度</span></button>
@@ -29,103 +29,74 @@
     </div>
     <nay style="display: block;">
       <div class="wx-content">
-        <form id="openAnAccountId" class="ant-form ant-form-horizontal wx-applyform">
+        <form id="TransferId" class="ant-form ant-form-horizontal wx-applyform">
           <div class="applyform-unit">
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="name" title="用户名称">用户名称</label>
-              </div>
-              <div class="ant-col-18 ant-form-item-control-wrapper">
-                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
-                                                                                               data-__field="[object Object]"
-                                                                                               data-__meta="[object Object]"
-                                                                                               id="name"
-                                                                                               placeholder="必须与身份证或营业执照一致"
-                                                                                               type="text"
-                                                                                               name="name"></span>
+              <div class="ant-row ant-form-item">
+                <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="originalUser"
+                                                                  title="原用户名">原用户名</label>
+                </div>
+                <div class="ant-col-18 ant-form-item-control-wrapper">
+                  <div class="ant-form-item-control"><span class="ant-form-item-children"><input
+                          class="ant-input" data-__field="[object Object]" data-__meta="[object Object]"
+                          id="originalUser"
+                          placeholder="请输入原用户名" type="text" name="originalUser"></span></div>
                 </div>
               </div>
-            </div>
-            <div class="ant-row ant-form-item form-exception1">
-              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="address"
-                                                                title="用水地址">用水地址</label></div>
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="newUser"
+                                                                title="新用户名">新用户名</label></div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="address"
-                                                                                               placeholder="如：xxx街xxx路xx号xx小区xx楼xx单元xxx"
+                                                                                               id="newUser"
+                                                                                               placeholder="请输入新用户名"
                                                                                                type="text"
-                                                                                               name="address"></span>
-                </div>
-              </div>
-            </div>
-            <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="handler"
-                                                                title="办理人">办理人</label></div>
-              <div class="ant-col-18 ant-form-item-control-wrapper">
-                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
-                                                                                               data-__field="[object Object]"
-                                                                                               data-__meta="[object Object]"
-                                                                                               id="handler"
-                                                                                               placeholder="请输入办理人"
-                                                                                               type="text"
-                                                                                               name="handler"></span>
+                                                                                               name="newUser"></span>
                 </div>
               </div>
             </div>
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="mobileTelephone"
-                                                                title="移动电话">移动电话</label>
-              </div>
-              <div class="ant-col-18 ant-form-item-control-wrapper">
-                <div class="ant-form-item-control"><span class="ant-form-item-children"><input
-                        class="ant-input" data-__field="[object Object]" data-__meta="[object Object]"
-                        id="mobileTelephone"
-                        placeholder="请输入移动电话" type="text" name="mobileTelephone"></span></div>
-              </div>
-            </div>
-            <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="fixedTelephone" title="固定电话">固定电话</label>
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="originalPhone" title="原手机号">原手机号</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="fixedTelephone"
-                                                                                               placeholder="请输入固定电话"
+                                                                                               id="originalPhone"
+                                                                                               placeholder="请输入原手机号"
                                                                                                type="text"
-                                                                                               name="fixedTelephone"></span>
+                                                                                               name="originalPhone"></span>
                 </div>
               </div>
             </div>
-
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="idCard" title="身份证号">身份证号</label>
+              <div class="ant-col-6 ant-form-item-label"><label class="" for="newPhone" title="新手机号">新手机号</label>
               </div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
                 <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
                                                                                                data-__field="[object Object]"
                                                                                                data-__meta="[object Object]"
-                                                                                               id="idCard"
-                                                                                               placeholder="请输入身份证号"
+                                                                                               id="newPhone"
+                                                                                               placeholder="请输入新手机号"
                                                                                                type="text"
-                                                                                               name="idCard"></span>
+                                                                                               name="newPhone"></span>
                 </div>
               </div>
             </div>
-
             <div class="ant-row ant-form-item">
-              <div class="ant-col-6 ant-form-item-label"><label class="" for="taxNumber" title="税号">税号</label>
-              </div>
+              <div class="ant-col-6 ant-form-item-label"><label class="ant-form-item-required" for="transferUse"
+                                                                title="过户原因">过户原因</label></div>
               <div class="ant-col-18 ant-form-item-control-wrapper">
-                <div class="ant-form-item-control"><span class="ant-form-item-children"><input class="ant-input"
-                                                                                               data-__field="[object Object]"
-                                                                                               data-__meta="[object Object]"
-                                                                                               id="taxNumber"
-                                                                                               placeholder="请输入税号"
-                                                                                               type="text"
-                                                                                               name="taxNumber"></span>
+                <div class="ant-form-item-control"><span class="ant-form-item-children"><div
+                        class="ant-select ant-select-enabled"
+                        id="transferUse"></div></span>
                 </div>
+                <select id="reason" name="reason" style="border :1px solid #d9d9d9; border: 0;height: 36px;padding: 4px 11px;">
+                  <option value="0">产权变更</option>
+                  <option value="1">用水地点迁移</option>
+                  <option value="2">其它</option>
+                </select>
               </div>
             </div>
           </div>
@@ -140,25 +111,26 @@
 
                 </svg></i></button></span></div>
                 <div class="ant-upload-list ant-upload-list-text"></div></span><div>所需文件:
+                  <a th:href="@{/other/gh/userCancellationTransferApplicationForm.doc}" target="" download="用户注销过户申请表">用户注销过户申请表</a><br/>
                   <button type="button" style="display:none" class="layui-btn pear-btn-success pear-reply" id="material">
                     <i class="layui-icon" style="display:none">&#xe67c;</i>上传
                   </button>
-            <input type="hidden" name="materialOne" id="materialUrl" value="">
+                  <ul class="materialUls">
+
+                  </ul>
+            <input type="hidden" name="materials" id="materialUrl" value="">
                 </div></div></span>
                   <div
                           class="ant-upload-list ant-upload-list-text"></div></span><div
                           style="color: blue; font-size: 10px; line-height: 20px;"><div
-                          style="margin-bottom: 8px; margin-top: 8px;">居民用户请上传：<br>1、户主身份证照片正反面 <br>2、物业证明 <br></div><div
-                          style="margin-bottom: 8px; margin-top: 8px;">单位用户请上传：<br>1、单位营业执照正（副）本、盖公章<br>2、办理人身份证<br>3、物业证明</div></div></span>
+                          style="margin-bottom: 8px; margin-top: 8px;">居民用户请上传：<br>1、用户注销过户申请表 <br></div></div></span>
                 </div>
               </div>
             </div>
           </div>
-
-
-          <div class="contact-info">如有疑问请咨询18173516309</div>
+          <div class="contact-info">如有疑问请咨询05362891562</div>
           <div class="wx-apply-footer">
-            <button id="openAnAccountSubmit" class="ant-btn footer-btn ant-btn-primary"><span>提 交</span></button>
+            <button id="TransferIdSubmit" class="ant-btn footer-btn ant-btn-primary"><span>提 交</span></button>
           </div>
         </form>
       </div>
@@ -169,30 +141,28 @@
         <div id="main">
           <div id="flow"><h1>办理说明</h1>
             <div id="text">
-              <div><h2 style="text-align:center;">开户申请告知书</h2>
-                <p style="text-indent:2em;">欢迎您到高密水业公司办理开户业务！我们将竭诚为您提供主动、高效、便捷的供水服务。为了使您在办理业务时更加快捷、明晰，请您仔细阅读以下内容：</p>
-                <h3>一、开户申请业务</h3>
-                <p style="text-indent:2em;">新用户须与高密水业公司建立新的供用水关系，签订供用水合同，办理开户业务。</p>
-                <h3>二、业务办理流程</h3>
-                <p style="text-indent:2em;">填写申请表并提交--审核材料--通水--用户确认信息—立户成功--结束。</p>
-                <p style="text-indent:6em;"></p>
-                <div class="media-wrap image-wrap align-center" style="text-align:center"><img
-                        class="media-wrap image-wrap align-center"
-                        src="http://pay.sdgmzls.cn/besapi/Information/img/kaihu.jpg" width="300px" height="512px"
-                        style="width:300px;height:512px"></div>
+              <div>
+                <h2 style="text-align:center;">过户申请告知书</h2>
+                <p></p>
+                <p style="text-indent:2em;">为了使您在办理业务时更加快捷、明晰，请您仔细阅读以下内容：</p>
+                <p></p>
+                <h3> 一、过户申请业务</h3>
+                <p style="text-indent:2em;"> 因用户产权的变更，需将用水号与新用户绑定，办理过户业务。</p>
+                <p></p>
+                <h3>二、业务办理流程 </h3>
+                <p style="text-indent:2em;"> 结清欠费--填写申请表并提交--审核材料—过户成功--结束</p>
+                <p></p>
+                <p></p>
+                <div class="media-wrap image-wrap align-center" style="text-align:center">
+                  <img class="media-wrap image-wrap align-center" th:src="@{/other/gh/guohu.jpg}" width="300px" height="368px" style="width:300px;height:368px"></div>
                 <p></p>
                 <p></p>
                 <h3>三、客户需提报的资料</h3>
-                <p style="text-indent:2em;">按照用户类别分为个人户与单位户，请跟据您所属类别提交对应材料：</p>
-                <p>个人户：户主身份证照片、物业证明（盖公章）<br>单位户：营业执照</p>
-                <p></p>
-                <p>四、用户须知</p>
-                <p></p>
-                <p><span style="color:#000000"><span style="font-size:16px"><span style="background-color:#ffffff">开户资料审核通过后供水员将在48小时内联系用户约定通水时间。</span></span></span>
-                </p>
-                <p><span style="color:#000000"><span style="font-size:16px"><span style="background-color:#ffffff">       到用户确认信息环节，请在72小时内进行确认，若没有在规定时间内进行确认系统默认同意，流程结束。</span></span></span>
-                </p>
-                <p> 如有疑问请咨询0536-2663456、2323145。 </p></div>
+                <p class="MsoNormal"> 户主身份证正反面、房产证原件照片（主页及户型图页）</p>
+                <p style="text-indent:2em;">备注：如果现户主未取得房产证，不予以网上办理业务，请与原户主双方携带身份证到公司客户服务中心进行办理。其他情况请到客户服务中心办理。</p>
+                <h3>四、咨询电话</h3>
+                <p style="text-indent:2em;">如有疑问请咨询2891562</p>
+              </div>
             </div>
           </div>
         </div>
@@ -217,7 +187,7 @@
                 <div class="major">
                   <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
 
-                  <div class="wai" th:if="${customers != null}" th:each="c,index:${customers}">
+                  <div class="wai" th:if="${transfers.size() > 0}" th:each="t,index:${transfers}">
                     <table>
                       <tbody>
                       <tr>
@@ -226,37 +196,48 @@
                                fill="currentColor" aria-hidden="true">
                             <path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path>
                           </svg>
-                        </i> [[${c.name}]]
+                        </i>
+                          <span th:if="${t.reason == '0'}">产权变更</span>
+                          <span th:if="${t.reason == '1'}">用水地点迁移</span>
+                          <span th:if="${t.reason == '2'}">其它</span>
                         </td>
                       </tr>
                       <tr>
                         <td class="applyTime">申请时间</td>
-                        <td class="value applyTime">[[${#dates.format(c.createTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
+                        <td class="value applyTime">[[${#dates.format(t.createTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
                       </tr>
                       <tr>
-                        <td class="exception1">办理人</td>
-                        <td class="value">[[${c.handler}]]</td>
+                        <td class="exception1">原户主</td>
+                        <td> [[${t.originalUser}]]</td>
+                      </tr>
+                      <tr>
+                        <td class="exception2">新户主</td>
+                        <td> [[${t.newUser}]]</td>
                       </tr>
                       <tr>
                         <td class="aa">申请编码</td>
-                        <td> [[${c.applicationCoding}]]</td>
+                        <td> [[${t.applicationCoding}]]</td>
                       </tr>
                       </tbody>
                     </table>
                     <div class="custom-divider"></div>
                     <div class="card-control">
                       <div class="progress">当前进度:
-                        <span th:if="${c.status == '0'}">提交申请</span>
-                        <span th:if="${c.status == '1'}">受理中</span>
-                        <span th:if="${c.status == '3'}">已驳回</span>
+                        <span th:if="${t.status == '0'}">提交申请</span>
+                        <span th:if="${t.status == '1'}">受理中</span>
+                        <span th:if="${t.status == '3'}">已退回</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="content-footer">
-                <div class="ant-divider ant-divider-horizontal ant-divider-with-text"><span
-                        class="ant-divider-inner-text">我是有底线的 -_-||</span></div>
+                <div class="ant-divider ant-divider-horizontal ant-divider-with-text">
+                  <span th:if="${transfers.size() > 0}" class="ant-divider-inner-text">我是有底线的 -_-||</span>
+                  <img th:if="${transfers.size() == 0}"
+                       src="data:image/png;base64,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"
+                       alt="" style="width: 120px; height: 160px;">
+                </div>
               </div>
             </div>
 
@@ -264,7 +245,7 @@
               <div>
                 <div class="major">
                   <div class="query-titel-box"><span class="query-title">查询结果</span><span class="x">×</span></div>
-                  <div class="wai" th:if="${finish != null}" th:each="c,index:${finish}">
+                  <div class="wai" th:if="${finish != null}" th:each="t,index:${finish}">
                     <table>
                       <tbody>
                       <tr>
@@ -273,33 +254,44 @@
                                fill="currentColor" aria-hidden="true">
                             <path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path>
                           </svg>
-                        </i> [[${c.name}]]
+                        </i>
+                          <span th:if="${t.reason == '0'}">产权变更</span>
+                          <span th:if="${t.reason == '1'}">用水地点迁移</span>
+                          <span th:if="${t.reason == '2'}">其它</span>
                         </td>
                       </tr>
                       <tr>
                         <td class="applyTime">申请时间</td>
-                        <td class="value applyTime">[[${#dates.format(c.createTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
+                        <td class="value applyTime">[[${#dates.format(t.createTime,'yyyy-MM-dd HH:mm:ss')}]]</td>
                       </tr>
                       <tr>
-                        <td class="exception1">办理人</td>
-                        <td class="value">[[${c.handler}]]</td>
+                        <td class="exception1">原户主</td>
+                        <td> [[${t.originalUser}]]</td>
+                      </tr>
+                      <tr>
+                        <td class="exception2">新户主</td>
+                        <td> [[${t.newUser}]]</td>
                       </tr>
                       <tr>
                         <td class="aa">申请编码</td>
-                        <td> [[${c.applicationCoding}]]</td>
+                        <td> [[${t.applicationCoding}]]</td>
                       </tr>
                       </tbody>
                     </table>
                     <div class="custom-divider"></div>
                     <div class="card-control">
-                      <div class="progress">当前进度: <span th:if="${c.status == '2'}">已完成</span></div>
+                      <div class="progress">当前进度: <span th:if="${t.status == '2'}">已完成</span></div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="content-footer">
-                <div class="ant-divider ant-divider-horizontal ant-divider-with-text"><span
-                        class="ant-divider-inner-text">我是有底线的 -_-||</span></div>
+                <div class="ant-divider ant-divider-horizontal ant-divider-with-text">
+                  <span th:if="${finish.size() > 0}" class="ant-divider-inner-text">我是有底线的 -_-||</span>
+                  <img th:if="${finish.size() == 0}"
+                       src="data:image/png;base64,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"
+                       alt="" style="width: 120px; height: 160px;">
+                </div>
               </div>
             </div>
 
@@ -308,13 +300,13 @@
       </div>
     </nay>
 
-    <div style="display: none;">v2021.8.25-2 LiShengLiang</div>
+    <div style="display: none;">v2021.8.25 LiShengLiang</div>
   </div>
 </div>
 </body>
 <script type="text/javascript">
-    var url = '[[${projectName}]]';
-    var $;
+    let url = '[[${projectName}]]';
+    let $;
     layui.use(['jquery','upload'], function () {
         let upload = layui.upload;
         $ = layui.jquery;
@@ -326,10 +318,18 @@
                 if (res.result == 0) {
                     let url = $("#materialUrl").val();
                     if(url != ''){
-                        $("#materialUrl").val(url + '?' + res.data)
+                        $("#materialUrl").val(url + '??' + res.data)
                     } else {
                         $("#materialUrl").val(res.data)
                     }
+                    let val = $("#materialUrl").val();
+                    let imgBox = '';
+                    let imGs = val.split("??");
+                    for(let i = 0;i < imGs.length;i++){
+                        let imgTxt = imGs[i].split("/")
+                        imgBox = imgBox + '<li style="list-style: none;">' + imgTxt[imgTxt.length - 1] + '</li>'
+                    }
+                    $(".materialUls").html(imgBox);
                 }
                 layer.msg(res.message);
             }
@@ -342,47 +342,46 @@
 
 <script type="text/javascript">
     const nay = new Array();
-    $("#openAnAccountSubmit").click(function () {
-        let name = $.trim($("#name").val());
-        if (name === "") {
-            layer.msg("用户名称不能为空")
+    $("#TransferIdSubmit").click(function () {
+        if ($.trim($("#originalUser").val()) === "") {
+            layer.msg("原用户名不能为空")
             return false;
         }
-        let cAddress = $.trim($("#address").val());
-        if (cAddress === "") {
-            layer.msg("用水地址不能为空")
+        if ($.trim($("#newUser").val()) === "") {
+            layer.msg("新用户名不能为空")
             return false;
         }
-        let handler = $.trim($("#handler").val());
-        if (handler === "") {
-            layer.msg("办理人不能为空")
+        if ($.trim($("#originalPhone").val()) === "") {
+            layer.msg("原手机号不能为空")
             return false;
         }
-        let mobileTelephone = $.trim($("#mobileTelephone").val());
-        if (mobileTelephone === "") {
-            layer.msg("移动电话不能为空")
+        if ($.trim($("#newPhone").val()) === "") {
+            layer.msg("新手机号不能为空")
             return false;
         }
-        let form = new FormData(document.getElementById("openAnAccountId"));
-        if (form.get("materialOne").name === "") {
-            layer.msg("请上传文件")
+        if ($("#materialUrl").val().split("?").length < 1) {
+            layer.msg("请至少上传一种文件")
             return false;
         }
         $.ajax({
-            url: url + "/bx/openAnAccount/submit",
-            data: form,
+            url: url + "/bx/transfer/submit",
+            data: new FormData(document.getElementById("TransferId")),
             dataType: "json",
             contentType: false,
             processData: false,
             type: 'post',
+            beforeSend: function () {
+                $('#TransferIdSubmit').attr("disabled", true);
+            },
             success: function (result) {
                 if (result.result == 0) {
-                    location.href = url + "/bx/openAnAccount";
+                    location.href = url + "/bx/transfer";
                 } else {
                     layer.msg(result.message)
                 }
             }
         })
+        $('#TransferIdSubmit').attr("disabled", false);
         return false;
     });
 

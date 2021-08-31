@@ -33,8 +33,8 @@ public class CustomerService {
 
 	public Result<CustomerEntity> findList(Integer offset, Integer limit, CustomerDto customerDto) {
 		Page page = PageHelper.offsetPage(offset, limit);
-		List<CustomerEntity> fuzzyNewspaperByPage = customerDao.getFuzzyCustomerByPage(customerDto);
-		return Result.ok().count(page.getTotal()).data(fuzzyNewspaperByPage).code(ResultUtil.RESULT_SUCCESS);
+		List<CustomerEntity> fuzzyCustomerByPage = customerDao.getFuzzyCustomerByPage(customerDto);
+		return Result.ok().count(page.getTotal()).data(fuzzyCustomerByPage).code(ResultUtil.RESULT_SUCCESS);
 	}
 
 	public int updateStatus(CustomerDto customerDto) {
@@ -43,5 +43,9 @@ public class CustomerService {
 
 	public CustomerEntity getBzById(Integer id) {
 		return customerDao.getBzById(id);
+	}
+
+	public Integer getCustomerByVerification(String verification) {
+		return customerDao.getCustomerByVerification(verification);
 	}
 }

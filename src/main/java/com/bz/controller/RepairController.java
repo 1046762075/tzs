@@ -1,12 +1,14 @@
 package com.bz.controller;
 
 import com.bz.entity.CustomerEntity;
+import com.bz.entity.MyTransferEntity;
 import com.bz.entity.NewspaperEntity;
 import com.bz.result.ResultResponse;
 import com.bz.result.ResultUtil;
 import com.bz.security.utils.FileUtils;
 import com.bz.service.BzService;
 import com.bz.service.CustomerService;
+import com.bz.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +39,9 @@ public class RepairController extends FileUtils {
 
 	@Autowired
 	CustomerService customerService;
+
+	@Autowired
+	TransferService transferService;
 
 	@GetMapping("/login")
 	public String login(Model model){
@@ -125,7 +130,6 @@ public class RepairController extends FileUtils {
 		}
 	}
 
-
 	// ===========================开户==============================
 	@GetMapping("/openAnAccount")
 	public String openAnAccount(Model model){
@@ -156,18 +160,19 @@ public class RepairController extends FileUtils {
 	public Object openAnAccountSubmit(CustomerEntity customer){
 		try {
 			String[] materials = customer.getMaterialOne().split("\\?\\?");
-			if(materials.length < 2){
-				return new ResultResponse(ResultUtil.RESULT_ERROR, "请至少上传两种资料");
+			if(materials.length < 3){
+				return new ResultResponse(ResultUtil.RESULT_ERROR, "请至少上传三种资料");
 			}
 			customer.setMaterialOne(materials[0]);
 			customer.setMaterialTwo(materials[1]);
+			customer.setMaterialThree(materials[2]);
 			customer.setVerification((String) getSession().getAttribute("verification"));
-			if(materials.length > 2){
-				customer.setMaterialThree(materials[2]);
-				if(materials.length > 3){
-					customer.setMaterialFour(materials[3]);
-					if(materials.length > 4){
-						customer.setMaterialFive(materials[4]);
+			if(materials.length > 3){
+				customer.setMaterialFour(materials[3]);
+				if(materials.length > 4){
+					customer.setMaterialFive(materials[4]);
+					if(materials.length > 5){
+						customer.setMaterialSex(materials[5]);
 					}
 				}
 			}
@@ -183,13 +188,6 @@ public class RepairController extends FileUtils {
 		}
 	}
 
-
-
-
-
-
-
-
 	// ===========================过户==============================
 	@GetMapping("/transfer")
 	public String transfer(Model model){
@@ -197,21 +195,42 @@ public class RepairController extends FileUtils {
 		if(verification == null || verification.equals("")){
 			return "app/login";
 		}
-		List<NewspaperEntity> entities = this.bxService.findInstallationRecord(verification);
-		// jdk1.7
-		List<NewspaperEntity> finish = new ArrayList<>();
-		List<NewspaperEntity> undone = new ArrayList<>();
-		for (NewspaperEntity entity : entities) {
-			if(entity.getStatus().equals(NewspaperEntity.finish)){
+		List<MyTransferEntity> entities = this.transferService.findAll(verification);
+		List<MyTransferEntity> finish = new ArrayList<>();
+		List<MyTransferEntity> undone = new ArrayList<>();
+		for (MyTransferEntity entity : entities) {
+			if(entity.getStatus().equals(MyTransferEntity.finish)){
 				finish.add(entity);
 			}else {
 				undone.add(entity);
 			}
 		}
-		model.addAttribute("newspapers", undone);
+		model.addAttribute("transfers", undone);
 		model.addAttribute("finish", finish);
 		model.addAttribute("projectName", projectName);
 		model.addAttribute("verification", verification);
 		return "app/gh/transfer";
+	}
+
+	@ResponseBody
+	@PostMapping("/transfer/submit")
+	public Object transferSubmit(MyTransferEntity transfer){
+		try {
+			String[] materials = transfer.getMaterials().split("\\?\\?");
+			if(materials.length == 0){
+				return new ResultResponse(ResultUtil.RESULT_ERROR, "请至少上传一种资料");
+			}
+			transfer.setVerification((String) getSession().getAttribute("verification"));
+			transfer.setCustomerId(customerService.getCustomerByVerification(transfer.getVerification()));
+			transfer.setCreateTime(new Date());
+			if(this.transferService.submit(transfer) == 1){
+				return new ResultResponse(ResultUtil.RESULT_SUCCESS, "提交成功");
+			} else {
+				return new ResultResponse(ResultUtil.RESULT_ERROR, "提交失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResultResponse(ResultUtil.RESULT_ERROR, e.getMessage());
+		}
 	}
 }
