@@ -1,7 +1,9 @@
 package com.bz.entity;
 
-import java.math.BigDecimal;
+import lombok.Data;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -10,6 +12,7 @@ import java.util.Date;
  * @email 1046762075@qq.com
  * @date 2021-08-23 15:19:44
  */
+@Data
 public class NewspaperEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

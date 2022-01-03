@@ -1,6 +1,8 @@
 package com.bz.entity;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
  * @email 1046762075@qq.com
  * @date 2021-08-27 19:24:17
  */
+@Data
 public class CustomerEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

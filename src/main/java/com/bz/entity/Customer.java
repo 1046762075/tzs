@@ -1,7 +1,6 @@
 package com.bz.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,7 +13,7 @@ import java.util.Date;
  * @date 2021-10-10 16:14:46
  */
 @Data
-@TableName("customer")
+//@TableName("customer")
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 

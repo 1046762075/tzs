@@ -1,5 +1,7 @@
 package com.bz.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ import java.util.Date;
  * @email 1046762075@qq.com
  * @date 2021-08-31 09:09:25
  */
+@Data
 public class MyTransferEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String finish = "2";
