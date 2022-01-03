@@ -3,9 +3,9 @@ spring:
   datasource:
     driver:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://114.215.137.110:13306/tzs_bx??useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
-    username: tzs_bx
-    password: YfFRzBan7Zm7hKz8
+    url: jdbc:mysql://119.188.90.126:13306/bz?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    username: bz
+    password: ZHzxR3HKs76C8Dy2
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       # 初始化配置
